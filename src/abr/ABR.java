@@ -17,21 +17,17 @@ public class ABR {
     this.filsDroit = null;
   }
 
-  /*les set ne sont pas corectes car il faut checker la valeur du fils que l'ont fait inserer
-
-  public void setFilsGauche(ABR filsG) {
+  private void setFilsGauche(ABR filsG) {
     this.filsGauche = filsG;
   }
 
-  public void setFilsDroit(ABR filsD) {
+  private void setFilsDroit(ABR filsD) {
     this.filsDroit = filsD;
   }
 
-  public void setValeur(int v) {
+  private void setValeur(int v) {
     this.valeur = v;
   }
-
-  */
 
   public ABR getFilsGauche() {
     return this.filsGauche;
@@ -65,7 +61,27 @@ public class ABR {
 
   public void inserer(int v) {
 
+    if(this.valeur >= v) {
+      if(this.filsGauche == null) {
+        ABR nouveauNoeud = new ABR(v);
+        this.setFilsGauche(nouveauNoeud);
+      } else {
+        this.filsGauche.inserer(v);
+      }
+    } else {
+      if(this.valeur < v) {
+        if(this.filsDroit == null) {
+          ABR nouveauNoeud = new ABR(v);
+          this.setFilsDroit(nouveauNoeud);
+        } else {
+          this.filsDroit.inserer(v);
+        }
+      }
+    }
   }
 
+  //TODO fonction de supression
+
+  //TODO fonction de recherche plus grand
 
 }
