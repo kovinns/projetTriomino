@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import plateau.Triomino;
 
 public class Application{
 
