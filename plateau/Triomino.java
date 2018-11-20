@@ -1,3 +1,5 @@
+package plateau;
+
  public class Triomino{
 
   int[] coins;
