@@ -1,3 +1,5 @@
+package plateau;
+
 public class PaireTriominos{
 
   Triomino[] paire;
@@ -23,7 +25,7 @@ public class PaireTriominos{
   public void setPosition(int x, int y){
     this.x = x;
     this.y = y;
-    // TODO
+
   }
 
 }
