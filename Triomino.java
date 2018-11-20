@@ -1,4 +1,4 @@
-public class Triomino{
+ public class Triomino{
 
   int[] coins;
   int x, y, orientation;

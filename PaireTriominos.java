@@ -12,10 +12,11 @@ public class PaireTriominos{
   }
 
   public void addTriomino(Triomino t, int orientation){
+    t.positionner(this.x, this.y, orientation);
     if(orientation > 2){
-      
+      this.paire[1] = t;
     }else{
-
+      this.paire[1] = t;
     }
   }
 
