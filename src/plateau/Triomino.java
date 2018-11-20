@@ -2,8 +2,8 @@ package plateau;
 
  public class Triomino{
 
-  int[] coins;
-  int x, y, orientation;
+  private int[] coins;
+  private int x, y, orientation;
 
   public Triomino(int a, int b, int c){
     this.coins = new int[3];

@@ -2,8 +2,8 @@ package plateau;
 
 public class PaireTriominos{
 
-  Triomino[] paire;
-  int x, y;
+  private Triomino[] paire;
+  private int x, y;
 
   public PaireTriominos(int x, int y){
     this.x = x;
@@ -18,14 +18,13 @@ public class PaireTriominos{
     if(orientation > 2){
       this.paire[1] = t;
     }else{
-      this.paire[1] = t;
+      this.paire[0] = t;
     }
   }
 
   public void setPosition(int x, int y){
     this.x = x;
     this.y = y;
-
   }
 
 }
