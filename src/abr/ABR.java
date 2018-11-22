@@ -80,7 +80,9 @@ public class ABR {
     }
   }
 
-  //TODO fonction de supression
+  public void suprimer(int v) {
+    
+  }
 
   //TODO fonction de recherche plus grand
 
