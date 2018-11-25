@@ -17,11 +17,11 @@ public class ABR {
     this.filsDroit = null;
   }
 
-  private void setFilsGauche(ABR filsG) {
+  public void setFilsGauche(ABR filsG) {
     this.filsGauche = filsG;
   }
 
-  private void setFilsDroit(ABR filsD) {
+  public void setFilsDroit(ABR filsD) {
     this.filsDroit = filsD;
   }
 
@@ -59,6 +59,14 @@ public class ABR {
     return res;
   }
 
+  public ABR rechercherPlusgrand() {
+      if(this.filsDroit == null) {
+          return this;
+      } else {
+          this.filsDroit.rechercherPlusgrand();
+      }
+  }
+
   public void inserer(int v) {
 
     if(this.valeur >= v) {
@@ -80,10 +88,49 @@ public class ABR {
     }
   }
 
-  public void suprimer(int v) {
-    
+  public void inserer(ABR a) {
+      if(this.valeur >= a.getValeur()) {
+          if (this.filsGauche() == null) {
+              this.setFilsGauche(a);
+          } else {
+              this.filsGauche().inserer(a);
+          }
+      } else {
+          if(this.valeur < a.getValeur()){
+              if(this.filsDroit == null) {
+                  this.setFilsDroit(a);
+              } else {
+                  this.filsDroit.inserer(a);
+              }
+          }
+      }
   }
 
-  //TODO fonction de recherche plus grand
+  public boolean suprimer(int v) {
+      boolean res = false;
+
+      if(this.valeur == v) {
+          if(this.filsGauche == null) {
+              this = this.filsDroit;
+          } else {
+              if(this.filsDroit == null) {
+                  this = this.filsGauche();
+              } else {
+                  this.filsDroit().inserer(this.filsGauche.getFilsDroit());
+                  this.filsGauche.setFilsDroit(this.filsDroit);
+                  this = this.filsGauche;
+              }
+          }
+          res = true;
+      }
+      if(this.valeur > v && this.filsGauche != null) {
+          this.filsGauche.suprimer(v);
+      }else {
+          if(this.valeur < v && this.filsDroit != null) {
+              this.filsDroit.suprimer(v);
+          }
+      }
+    return res;
+  }
 
 }
