@@ -13,18 +13,13 @@ public class PaireTriominos{
     this.paire[1] = null;
   }
 
-  public boolean addTriomino(Triomino t, int orientation){
-    Triomino tri;
-    if(this.paire[0orientation/3] == null){
-      return false;
-    }
-    tri = paire[orientation/3];
-    if(!tri.remplacable(t, orientation)){
-      return false;
-    }
-    this.parie[orientation/3] = t;
+  public void addTriomino(Triomino t, int orientation){
     t.positionner(this.x, this.y, orientation);
-    return true;
+    if(orientation > 2){
+      this.paire[1] = t;
+    }else{
+      this.paire[0] = t;
+    }
   }
 
   public void setPosition(int x, int y){
