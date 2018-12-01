@@ -47,7 +47,7 @@ public class TdArbre {
     }
 
     public int getBascule() {
-        return bascule;
+        return this.bascule;
     }
 
     public void setBascule(int bascule) {
@@ -79,11 +79,23 @@ public class TdArbre {
     }
 
     public int basculeSuivante() {
+        int newBascule;
         if(this.bascule == 3) {
-            this.bascule = 1;
+            newBascule = 1;
         } else {
-            this.bascule = this.bascule++;
+            newBascule = this.bascule++;
         }
+        return newBascule;
+    }
+
+    public int basculePrecedente() {
+        int newBascule;
+        if(this.bascule == 1) {
+            newBascule = 3;
+        } else {
+            newBascule = this.bascule--;
+        }
+        return newBascule;
     }
 
     public int getValABascule(Noeud n, int b) {
@@ -107,7 +119,7 @@ public class TdArbre {
     }
 
     public boolean rechercher(TdArbre a) {
-        int res = false;
+        boolean res = false;
 
         int valCourante = this.valeurCourante();
         int valCourRech = a.valeurCourante(this.bascule);
@@ -149,6 +161,37 @@ public class TdArbre {
     }
 
     public boolean suprimer(TdArbre a) {
-        //TODO
+        boolean res = false;
+
+        int valCourante = this.valeurCourante();
+        int valCourSupr = a.valeurCourante(this.bascule);
+
+        if(valCourSupr == valCourante) {
+            if(egalNoeud(this.noeud, a.getNoeud())) {
+                if(this.filsGauche == null) {
+                    this.filsDroit.setBascule(basculePrecedente());
+                    this = this.filsDroit;
+                } else {
+                    if(this.filsDroit == null) {
+                        this.filsGauche.setBascule(basculePrecedente());
+                        this = this.filsGauche;
+                    } else {
+                        this.filsDroit.inserer(this.filsGauche.getFilsDroit());
+                        this.filsGauche.setFilsDroit(this.filsDroit);
+                        this.filsGauche.setBascule(basculePrecedente());
+                        this = this.filsGauche;
+                    }
+                }
+                res  = true;
+            }
+        }
+
+        if(valCourante > valCourSupr) {
+            this.filsGauche.suprimer(a);
+        } else if(valCourante < valCourSupr) {
+            this.filsDroit.suprimer(a);
+        }
+
+        return res;
     }
 }
