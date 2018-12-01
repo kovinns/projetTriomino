@@ -36,6 +36,10 @@ package plateau;
     return this.coins[i%3];
   }
 
+  public Integer setCoin(int i, Integer a){
+    this.coins[i%3] = a;
+  }
+
   public boolean isEmplacement(){
     return this.emplacement;
   }
