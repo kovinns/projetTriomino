@@ -81,6 +81,11 @@ public class ABR {
     return this.valeur;
   }
 
+  public void remplacerNoeud(ABR a) {
+      this.valeur = a.getValeur();
+      this.filsGauche = a.getFilsGauche();
+      this.filsDroit = a.getFilsDroit();
+  }
     /**
      * Recherche une valeur dans l'arbre à partir du noeud courant
      * @param v la valeur à rechercher dans l'arbre
@@ -117,7 +122,7 @@ public class ABR {
   }
 
   /**
-   * Recherche la plus grande valeur stocké dans l'arbre à partir du noeud courant
+   * Recherche la plus petite valeur stocké dans l'arbre à partir du noeud courant
    * @return le noeud avec la valeur la plus grande de l'arbre
    */
   public ABR rechercherPlusPetit() {
@@ -175,34 +180,34 @@ public class ABR {
       }
   }
 
-  // /**
-  //  * Suprime un élément de l'arbre à partir du noeud courant
-  //  * @param v l'element à suprimer de l'arbre
-  //  * @return un boolean indiquant si l'élement a été suprimé ou non
-  //  */
-  // public boolean suprimer(int v) {
-  //     boolean res = false;
-  //
-  //     if(this.valeur == v) {
-  //         if(this.filsGauche == null) {
-  //             this = this.filsDroit;
-  //         } else {
-  //             if(this.filsDroit == null) {
-  //                 this = this.filsGauche;
-  //             } else {
-  //                 this.filsDroit.inserer(this.filsGauche.getFilsDroit());
-  //                 this.filsGauche.setFilsDroit(this.filsDroit);
-  //                 this = this.filsGauche;
-  //             }
-  //         }
-  //         res = true;
-  //     }
-  //     if(this.valeur > v && this.filsGauche != null) {
-  //         this.filsGauche.suprimer(v);
-  //     }else if(this.valeur < v && this.filsDroit != null) {
-  //         this.filsDroit.suprimer(v);
-  //     }
-  //   return res;
-  // }
+   /**
+    * Suprime un élément de l'arbre à partir du noeud courant
+    * @param v l'element à suprimer de l'arbre
+    * @return un boolean indiquant si l'élement a été suprimé ou non
+    */
+   public boolean suprimer(int v) {
+       boolean res = false;
+
+       if(this.valeur == v) {
+           if(this.filsGauche == null) {
+               this.remplacerNoeud(this.filsDroit);
+           } else {
+               if(this.filsDroit == null) {
+                   this.remplacerNoeud(this.filsGauche);
+               } else {
+                   this.filsDroit.inserer(this.filsGauche.getFilsDroit());
+                   this.filsGauche.setFilsDroit(this.filsDroit);
+                   this = remplacerNoeud(this.filsGauche);
+               }
+           }
+           res = true;
+       }
+       if(this.valeur > v && this.filsGauche != null) {
+           this.filsGauche.suprimer(v);
+       }else if(this.valeur < v && this.filsDroit != null) {
+           this.filsDroit.suprimer(v);
+       }
+     return res;
+   }
 
 }

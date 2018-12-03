@@ -14,89 +14,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ABR.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/abr/ABR.java">
+      <file leaf-file-name="ABR.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/structRecherche/abr/ABR.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1888">
-              <caret line="195" column="1" lean-forward="true" selection-start-line="195" selection-start-column="1" selection-end-line="195" selection-end-column="1" />
+            <state relative-caret-position="861">
+              <caret line="202" column="22" lean-forward="true" selection-start-line="202" selection-start-column="22" selection-end-line="202" selection-end-column="22" />
               <folding>
-                <element signature="method#ABR#0;class#ABR#0" expanded="false" />
-                <element signature="method#ABR#1;class#ABR#0" expanded="false" />
                 <element signature="method#rechercher#0;class#ABR#0" expanded="false" />
-                <element signature="method#rechercherPlusgrand#0;class#ABR#0" expanded="false" />
+                <element signature="method#rechercherPlusGrand#0;class#ABR#0" expanded="false" />
+                <element signature="method#rechercherPlusPetit#0;class#ABR#0" expanded="false" />
                 <element signature="method#inserer#0;class#ABR#0" expanded="false" />
                 <element signature="method#inserer#1;class#ABR#0" expanded="false" />
-                <element signature="method#suprimer#0;class#ABR#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TdArbre.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/kdArbre/TdArbre.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-              <folding>
-                <element signature="method#TdArbre#0;class#TdArbre#0" expanded="false" />
-                <element signature="method#TdArbre#1;class#TdArbre#0" expanded="false" />
-                <element signature="method#TdArbre#2;class#TdArbre#0" expanded="false" />
-                <element signature="method#TdArbre#3;class#TdArbre#0" expanded="false" />
-                <element signature="method#valeurCourante#0;class#TdArbre#0" expanded="false" />
-                <element signature="method#valeurCourante#1;class#TdArbre#0" expanded="false" />
-                <element signature="method#basculeSuivante#0;class#TdArbre#0" expanded="false" />
-                <element signature="method#basculePrecedente#0;class#TdArbre#0" expanded="false" />
-                <element signature="method#getValABascule#0;class#TdArbre#0" expanded="false" />
-                <element signature="method#egalNoeud#0;class#TdArbre#0" expanded="false" />
-                <element signature="method#rechercher#0;class#TdArbre#0" expanded="false" />
-                <element signature="method#inserer#0;class#TdArbre#0" expanded="false" />
-                <element signature="method#suprimer#0;class#TdArbre#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Noeud.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/kdArbre/Noeud.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="73" column="6" lean-forward="true" selection-start-line="73" selection-start-column="6" selection-end-line="73" selection-end-column="6" />
-              <folding>
-                <element signature="method#Noeud#0;class#Noeud#0" expanded="false" />
-                <element signature="method#toString#0;class#Noeud#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Application.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Application.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="12" column="9" lean-forward="true" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PaireTriominos.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/plateau/PaireTriominos.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-210">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Triomino.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/plateau/Triomino.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -122,6 +51,8 @@
         <option value="$PROJECT_DIR$/src/kdArbre/TdArbre.java" />
         <option value="$PROJECT_DIR$/src/abr/ABR.java" />
         <option value="$PROJECT_DIR$/src/kdArbre/Noeud.java" />
+        <option value="$PROJECT_DIR$/src/Application.java" />
+        <option value="$PROJECT_DIR$/src/structRecherche/abr/ABR.java" />
       </list>
     </option>
   </component>
@@ -131,7 +62,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
@@ -151,6 +82,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -173,20 +105,26 @@
               <item name="projetTriomino" type="b2602c69:ProjectViewProjectNode" />
               <item name="projetTriomino" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="abr" type="462c0819:PsiDirectoryNode" />
+              <item name="plateau" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="projetTriomino" type="b2602c69:ProjectViewProjectNode" />
               <item name="projetTriomino" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="kdArbre" type="462c0819:PsiDirectoryNode" />
+              <item name="structRecherche" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="projetTriomino" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projetTriomino" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="structRecherche" type="462c0819:PsiDirectoryNode" />
+              <item name="abr" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -306,11 +244,12 @@
       <workItem from="1543165286213" duration="5961000" />
       <workItem from="1543220657828" duration="7308000" />
       <workItem from="1543675295746" duration="4131000" />
+      <workItem from="1543855932573" duration="878000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18755000" />
+    <option name="totallyTimeSpent" value="19633000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -322,7 +261,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -332,25 +271,25 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.11928651" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.11928651" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17725752" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1337953" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13486141" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -387,142 +326,38 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="8" />
+      <option name="time" value="9" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/abr/ABR.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding>
-            <element signature="method#ABR#0;class#ABR#0" expanded="false" />
-            <element signature="method#ABR#1;class#ABR#0" expanded="false" />
-            <element signature="method#rechercher#0;class#ABR#0" expanded="false" />
-            <element signature="method#rechercherPlusgrand#0;class#ABR#0" expanded="false" />
-            <element signature="method#inserer#0;class#ABR#0" expanded="false" />
-            <element signature="method#inserer#1;class#ABR#0" expanded="false" />
-            <element signature="method#suprimer#0;class#ABR#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="2375">
+          <caret line="195" column="1" lean-forward="false" selection-start-line="195" selection-start-column="1" selection-end-line="195" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/kdArbre/Noeud.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="650">
-          <caret line="26" column="10" lean-forward="true" selection-start-line="26" selection-start-column="10" selection-end-line="26" selection-end-column="10" />
-          <folding>
-            <element signature="method#Noeud#0;class#Noeud#0" expanded="false" />
-            <element signature="method#toString#0;class#Noeud#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="1425">
+          <caret line="73" column="6" lean-forward="true" selection-start-line="73" selection-start-column="6" selection-end-line="73" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Application.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="17" lean-forward="true" selection-start-line="0" selection-start-column="17" selection-end-line="0" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/kdArbre/TdArbre.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="6" column="16" lean-forward="true" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
-          <folding>
-            <element signature="method#TdArbre#0;class#TdArbre#0" expanded="false" />
-            <element signature="method#TdArbre#1;class#TdArbre#0" expanded="false" />
-            <element signature="method#TdArbre#2;class#TdArbre#0" expanded="false" />
-            <element signature="method#TdArbre#3;class#TdArbre#0" expanded="false" />
-            <element signature="method#valeurCourante#0;class#TdArbre#0" expanded="false" />
-            <element signature="method#valeurCourante#1;class#TdArbre#0" expanded="false" />
-            <element signature="method#basculeSuivante#0;class#TdArbre#0" expanded="false" />
-            <element signature="method#basculePrecedente#0;class#TdArbre#0" expanded="false" />
-            <element signature="method#getValABascule#0;class#TdArbre#0" expanded="false" />
-            <element signature="method#egalNoeud#0;class#TdArbre#0" expanded="false" />
-            <element signature="method#rechercher#0;class#TdArbre#0" expanded="false" />
-            <element signature="method#inserer#0;class#TdArbre#0" expanded="false" />
-            <element signature="method#suprimer#0;class#TdArbre#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/abr/ABR.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="method#ABR#0;class#ABR#0" expanded="false" />
-            <element signature="method#ABR#1;class#ABR#0" expanded="false" />
-            <element signature="method#rechercher#0;class#ABR#0" expanded="false" />
-            <element signature="method#rechercherPlusgrand#0;class#ABR#0" expanded="false" />
-            <element signature="method#inserer#0;class#ABR#0" expanded="false" />
-            <element signature="method#inserer#1;class#ABR#0" expanded="false" />
-            <element signature="method#suprimer#0;class#ABR#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/abr/ABR.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="method#ABR#0;class#ABR#0" expanded="false" />
-            <element signature="method#ABR#1;class#ABR#0" expanded="false" />
-            <element signature="method#rechercher#0;class#ABR#0" expanded="false" />
-            <element signature="method#rechercherPlusgrand#0;class#ABR#0" expanded="false" />
-            <element signature="method#inserer#0;class#ABR#0" expanded="false" />
-            <element signature="method#inserer#1;class#ABR#0" expanded="false" />
-            <element signature="method#suprimer#0;class#ABR#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/abr/ABR.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="method#ABR#0;class#ABR#0" expanded="false" />
-            <element signature="method#ABR#1;class#ABR#0" expanded="false" />
-            <element signature="method#rechercher#0;class#ABR#0" expanded="false" />
-            <element signature="method#rechercherPlusgrand#0;class#ABR#0" expanded="false" />
-            <element signature="method#inserer#0;class#ABR#0" expanded="false" />
-            <element signature="method#inserer#1;class#ABR#0" expanded="false" />
-            <element signature="method#suprimer#0;class#ABR#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/kdArbre/Noeud.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="17" lean-forward="false" selection-start-line="0" selection-start-column="17" selection-end-line="0" selection-end-column="17" />
-          <folding>
-            <element signature="method#Noeud#0;class#Noeud#0" expanded="false" />
-            <element signature="method#toString#0;class#Noeud#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="275">
+          <caret line="12" column="9" lean-forward="true" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/plateau/PaireTriominos.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-210">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -536,40 +371,99 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Application.java">
+    <entry file="file://$PROJECT_DIR$/src/kdArbre/TdArbre.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="12" column="9" lean-forward="true" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="175">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/abr/ABR.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1888">
-          <caret line="195" column="1" lean-forward="true" selection-start-line="195" selection-start-column="1" selection-end-line="195" selection-end-column="1" />
-          <folding>
-            <element signature="method#ABR#0;class#ABR#0" expanded="false" />
-            <element signature="method#ABR#1;class#ABR#0" expanded="false" />
-            <element signature="method#rechercher#0;class#ABR#0" expanded="false" />
-            <element signature="method#rechercherPlusgrand#0;class#ABR#0" expanded="false" />
-            <element signature="method#inserer#0;class#ABR#0" expanded="false" />
-            <element signature="method#inserer#1;class#ABR#0" expanded="false" />
-            <element signature="method#suprimer#0;class#ABR#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="550">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/kdArbre/Noeud.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
+        <state relative-caret-position="650">
+          <caret line="26" column="10" lean-forward="true" selection-start-line="26" selection-start-column="10" selection-end-line="26" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="17" lean-forward="true" selection-start-line="0" selection-start-column="17" selection-end-line="0" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kdArbre/TdArbre.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" column="16" lean-forward="true" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/abr/ABR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/abr/ABR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/abr/ABR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kdArbre/Noeud.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="17" lean-forward="false" selection-start-line="0" selection-start-column="17" selection-end-line="0" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/abr/ABR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2375">
+          <caret line="195" column="1" lean-forward="false" selection-start-line="195" selection-start-column="1" selection-end-line="195" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kdArbre/Noeud.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1425">
           <caret line="73" column="6" lean-forward="true" selection-start-line="73" selection-start-column="6" selection-end-line="73" selection-end-column="6" />
-          <folding>
-            <element signature="method#Noeud#0;class#Noeud#0" expanded="false" />
-            <element signature="method#toString#0;class#Noeud#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -577,20 +471,44 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="22" column="3" lean-forward="false" selection-start-line="22" selection-start-column="3" selection-end-line="22" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plateau/PaireTriominos.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plateau/Triomino.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/structRecherche/abr/ABR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="861">
+          <caret line="202" column="22" lean-forward="true" selection-start-line="202" selection-start-column="22" selection-end-line="202" selection-end-column="22" />
           <folding>
-            <element signature="method#TdArbre#0;class#TdArbre#0" expanded="false" />
-            <element signature="method#TdArbre#1;class#TdArbre#0" expanded="false" />
-            <element signature="method#TdArbre#2;class#TdArbre#0" expanded="false" />
-            <element signature="method#TdArbre#3;class#TdArbre#0" expanded="false" />
-            <element signature="method#valeurCourante#0;class#TdArbre#0" expanded="false" />
-            <element signature="method#valeurCourante#1;class#TdArbre#0" expanded="false" />
-            <element signature="method#basculeSuivante#0;class#TdArbre#0" expanded="false" />
-            <element signature="method#basculePrecedente#0;class#TdArbre#0" expanded="false" />
-            <element signature="method#getValABascule#0;class#TdArbre#0" expanded="false" />
-            <element signature="method#egalNoeud#0;class#TdArbre#0" expanded="false" />
-            <element signature="method#rechercher#0;class#TdArbre#0" expanded="false" />
-            <element signature="method#inserer#0;class#TdArbre#0" expanded="false" />
-            <element signature="method#suprimer#0;class#TdArbre#0" expanded="false" />
+            <element signature="method#rechercher#0;class#ABR#0" expanded="false" />
+            <element signature="method#rechercherPlusGrand#0;class#ABR#0" expanded="false" />
+            <element signature="method#rechercherPlusPetit#0;class#ABR#0" expanded="false" />
+            <element signature="method#inserer#0;class#ABR#0" expanded="false" />
+            <element signature="method#inserer#1;class#ABR#0" expanded="false" />
           </folding>
         </state>
       </provider>
