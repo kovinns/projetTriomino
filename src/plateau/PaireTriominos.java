@@ -25,7 +25,7 @@ public class PaireTriominos{
       return false;
     }
     if(tri != null){
-      //TODO supprimer tri de la structure de recherche
+      this.plateau.supprInStruct(tri);
     }
     this.paire[orientation/3] = t;
     t.positionner(this.x, this.y, orientation);
@@ -41,9 +41,36 @@ public class PaireTriominos{
     Triomino tri = this.paire[position];
     if(tri != null && tri.isEmplacement()){
       if(tri.getCoin(a1) == null){
-        //TODO Supprimer le triomino de la struct de recherche
+        this.plateau.supprInStruct(tri);
         tri.setCoin(a1, t.getCoin(a2));
-        //TODO Ajouter le triomino à la structure de recherche après la modification
+        this.plateau.addInStruct(tri);
+      }
+      if(tri.getScore() < 60 && tri.getCoin(0) != null && tri.getCoin(1) != null && tri.getCoin(2) != null){
+        int score = 40;
+        int ajout = 0;
+        if(position == 0){
+          if(this.plateau.nombrePlaceParCoin(this.x, this.y, 0) == 5){
+            ajout += 10;
+          }
+          if(this.plateau.nombrePlaceParCoin(this.x, this.y, 2) == 5){
+            ajout += 10;
+          }
+          if(ajout < 20 && this.plateau.nombrePlaceParCoin(this.x, this.y, 3) == 5){
+            ajout += 10;
+          }
+        }else{
+          if(this.plateau.nombrePlaceParCoin(this.x, this.y, 0) == 5){
+            ajout += 10;
+          }
+          if(this.plateau.nombrePlaceParCoin(this.x, this.y, 1) == 5){
+            ajout += 10;
+          }
+          if(ajout < 20 && this.plateau.nombrePlaceParCoin(this.x, this.y, 2) == 5){
+            ajout += 10;
+          }
+        }
+        score += ajout;
+        tri.setScore(score);
       }
     }
 
@@ -55,19 +82,19 @@ public class PaireTriominos{
       if(tri.isEmplacement()){
         boolean modifie = false;
         if(tri.getCoin(a1) == null){
-          //TODO Supprimer le triomino de la struct de recherche
+          this.plateau.supprInStruct(tri);
           modifie = true;
           tri.setCoin(a1, t.getCoin(a2));
         }
-        if(tri.getCoin(a1) == null){
+        if(tri.getCoin(b1) == null){
           if(!modifie){
-            //TODO Supprimer le triomino de la struct de recherche
+            this.plateau.supprInStruct(tri);
             modifie = true;
           }
-          tri.setCoin(a1, t.getCoin(a2));
+          tri.setCoin(b1, t.getCoin(b2));
         }
         if(modifie){
-          //TODO Ajouter le triomino à la structure de recherche après la modification
+          this.plateau.addInStruct(tri);
         }
       }
     }else{
@@ -78,8 +105,35 @@ public class PaireTriominos{
       int c = 3 - a1 - b1;
       Integer valeur = this.plateau.getCoin(this.x, this.y, ((c == 0)? 0 : ((c == 1+position)? 2 : ((position == 0)? 3 : 1 ) ) ));
       tri.setCoin(c, valeur);
-      //TODO Ajouter le triomino à la structure de recherche
-     }
+      this.plateau.addInStruct(tri);
+    }
+    if(tri.getScore() < 60 && tri.getCoin(0) != null && tri.getCoin(1) != null && tri.getCoin(2) != null){
+      int score = 40;
+      int ajout = 0;
+      if(position == 0){
+        if(this.plateau.nombrePlaceParCoin(this.x, this.y, 0) == 5){
+          ajout += 10;
+        }
+        if(this.plateau.nombrePlaceParCoin(this.x, this.y, 2) == 5){
+          ajout += 10;
+        }
+        if(ajout < 20 && this.plateau.nombrePlaceParCoin(this.x, this.y, 3) == 5){
+          ajout += 10;
+        }
+      }else{
+        if(this.plateau.nombrePlaceParCoin(this.x, this.y, 0) == 5){
+          ajout += 10;
+        }
+        if(this.plateau.nombrePlaceParCoin(this.x, this.y, 1) == 5){
+          ajout += 10;
+        }
+        if(ajout < 20 && this.plateau.nombrePlaceParCoin(this.x, this.y, 2) == 5){
+          ajout += 10;
+        }
+      }
+      score += ajout;
+      tri.setScore(score);
+    }
   }
 
   public Integer getCoin(int c){
@@ -107,6 +161,34 @@ public class PaireTriominos{
       }
     }
     return null;
+  }
+
+  public int nombrePlaceParCoin(int c){
+    int retour = 0;
+    if(c == 0){
+      if(this.paire[0] != null && !this.paire[0].isEmplacement()){
+        retour++;
+      }
+      if(this.paire[1] != null && !this.paire[1].isEmplacement()){
+        retour++;
+      }
+    }else if(c == 1){
+      if(this.paire[1] != null && !this.paire[1].isEmplacement()){
+        retour++;
+      }
+    }else if(c == 2){
+      if(this.paire[0] != null && !this.paire[0].isEmplacement()){
+        retour++;
+      }
+      if(this.paire[1] != null && !this.paire[1].isEmplacement()){
+        retour++;
+      }
+    }else{
+      if(this.paire[0] != null && !this.paire[0].isEmplacement()){
+        retour++;
+      }
+    }
+    return retour;
   }
 
   public Triomino getTriomino(int p){

@@ -32,7 +32,7 @@ public class Noeud {
   }
 
   public boolean ajouterTriomino(Triomino t){
-    Integer v1 = this.getValeur(this.balance);
+    Integer v1 = this.getValeur(this.bascule);
     Integer v2 = t.getCoin(this.bascule);
     if(v1 == null || (v2 != null && v2 <= v1)){
       if(this.filsGauche != null){
@@ -53,13 +53,13 @@ public class Noeud {
 
   public ArrayList<Triomino> rechercher(Triomino t){
     ArrayList<Triomino> liste = new ArrayList<Triomino>();
-    Integer v1 = this.getValeur(this.balance);
+    Integer v1 = this.getValeur(this.bascule);
     Integer v2 = t.getCoin(this.bascule);
     if(v1 == null || v2 <= v1){
       if(
         (v1 == null || v1 == v2) &&
         (this.getValeur((this.bascule+1)%3) == null || this.getValeur((this.bascule+1)%3) == t.getCoin((this.bascule+1)%3)) &&
-        (this.getValeur((this.bascule+2)%3) == null || this.getValeur((this.bascule+2)%3) == t.getCoins((this.bascule+2)%3))
+        (this.getValeur((this.bascule+2)%3) == null || this.getValeur((this.bascule+2)%3) == t.getCoin((this.bascule+2)%3))
       ){
         liste.add(this.triomino);
       }
@@ -85,7 +85,7 @@ public class Noeud {
   }
 
   public boolean supprimerTriomino(Triomino t){
-    Integer v1 = this.getValeur(this.balance);
+    Integer v1 = this.getValeur(this.bascule);
     Integer v2 = t.getCoin(this.bascule);
     if(v1 == null || (v2 != null && v2 <= v1)){
       if(this.filsGauche != null){
@@ -98,7 +98,7 @@ public class Noeud {
             return true;
           }
         }else{
-          return this.filsGauche.supprimerTriomino();
+          return this.filsGauche.supprimerTriomino(t);
         }
       }else{
         return false;
@@ -114,7 +114,7 @@ public class Noeud {
             return true;
           }
         }else{
-          return this.filsDroit.supprimerTriomino();
+          return this.filsDroit.supprimerTriomino(t);
         }
       }else{
         return false;
@@ -142,6 +142,28 @@ public class Noeud {
     }else{
       return false;
     }
+  }
+
+  public Triomino max(int b){
+    int max = this.triomino.getCoin(b);
+    Triomino t = this.triomino;
+    Triomino tG = null;
+    Triomino tD = null;
+    if(this.filsDroit != null){
+      tD = this.filsDroit.max(b);
+      if(tD.getCoin(b) > max){
+        t = tD;
+        max = tD.getCoin(b);
+      }
+    }
+    if(this.bascule != b && this.filsGauche != null){
+      tG = this.filsGauche.max(b);
+      if(tG.getCoin(b) > max){
+        t = tG;
+        max = tG.getCoin(b);
+      }
+    }
+    return t;
   }
 
 }

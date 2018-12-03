@@ -3,7 +3,7 @@ package plateau;
  public class Triomino{
 
   private Integer[] coins;
-  private int x, y, orientation;
+  private int x, y, orientation, score;
   private boolean emplacement;
 
   public Triomino(Integer a, Integer b, Integer c, boolean emplacement){
@@ -11,7 +11,9 @@ package plateau;
     this.coins[0] = a;
     this.coins[1] = b;
     this.coins[2] = c;
+    this.orientation = 0;
     this.emplacement = emplacement;
+    this.score = 0;
   }
 
   public void positionner(int x, int y, int orientation){
@@ -65,8 +67,33 @@ package plateau;
     return true;
   }
 
+  public Integer getOrientation(Triomino t){
+    for(int i = 0; i < 3; i++){
+      if(this.remplacable(t, i)){
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  public int getX(){
+    return this.x;
+  }
+
+  public int getY(){
+    return this.y;
+  }
+
+  public int getScore(){
+    return this.score;
+  }
+
+  public void setScore(int score){
+    this.score = score;
+  }
+
   public String toString(){
-    return this.coins[0] + " " + this.coins[1] + " " + this.coins[2] + " " + this.orientation + " " + this.emplacement;
+    return this.coins[0] + " " + this.coins[1] + " " + this.coins[2];
   }
 
 }

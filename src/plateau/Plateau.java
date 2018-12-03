@@ -1,9 +1,16 @@
 package plateau;
 
+import java.util.Scanner;
+import java.util.ArrayList;
+
+import structRecherche.StructRecherche;
+import structRecherche.kdArbre.TdArbre;
+
 public class Plateau{
 
   private PaireTriominos[][] plateau;
   private int minX, minY, maxX, maxY;
+  private StructRecherche struct;
 
   public Plateau(){
     this.plateau = new PaireTriominos[30][59];
@@ -12,12 +19,11 @@ public class Plateau{
         this.plateau[i][j] = null;
       }
     }
-    this.plateau[15][29] = new PaireTriominos(15, 29, this);
-    this.plateau[15][29].addTriomino(new Triomino(null, null, null, true), 0, true);
-    this.minX = 15;
-    this.minY = 29;
-    this.maxX = 15;
-    this.maxY = 29;
+    this.struct = new TdArbre();
+    this.minX = 29;
+    this.minY = 0;
+    this.maxX = 29;
+    this.maxY = 0;
   }
 
   public boolean addTriomino(Triomino t, int x, int y, int orientation, boolean forcer){
@@ -281,6 +287,69 @@ public class Plateau{
     Integer coin = this.getCoin(maxX, maxY, 2);
     l += ((coin != null)? coin : " " );
     System.out.println(l);
+  }
+
+  public boolean addInStruct(Triomino t){
+    return this.struct.ajouterTriomino(t);
+  }
+
+  public boolean supprInStruct(Triomino t){
+    return this.struct.supprimerTriomino(t);
+  }
+
+  public ArrayList<Triomino> rechercheInStrut(Triomino t){
+    return this.struct.rechercher(t);
+  }
+
+  public int nombrePlaceParCoin(int x, int y, int c){
+    int nombre = 0;
+    nombre += plateau[x][y].nombrePlaceParCoin(c);
+    if(c < 2){
+      if(x > 0){
+        nombre += plateau[x-1][y].nombrePlaceParCoin(3-c);
+        if(c == 0){
+          if(y > 0){
+            nombre += plateau[x-1][y-1].nombrePlaceParCoin(2);
+          }
+        }else{
+          if(y < 58){
+            nombre += plateau[x-1][y+1].nombrePlaceParCoin(3);
+          }
+        }
+      }
+      if(c == 0){
+        if(y > 0){
+          nombre += plateau[x][y-1].nombrePlaceParCoin(1);
+        }
+      }else{
+        if(y < 58){
+          nombre += plateau[x][y+1].nombrePlaceParCoin(0);
+        }
+      }
+    }else{
+      if(x < 29){
+        nombre += plateau[x+1][y].nombrePlaceParCoin(3-c);
+        if(c == 3){
+          if(y > 0){
+            nombre += plateau[x+1][y-1].nombrePlaceParCoin(1);
+          }
+        }else{
+          if(y < 58){
+            nombre += plateau[x+1][y+1].nombrePlaceParCoin(0);
+          }
+        }
+      }
+      if(c == 3){
+        if(y > 0){
+          nombre += plateau[x][y-1].nombrePlaceParCoin(2);
+        }
+      }else{
+        if(y < 58){
+          nombre += plateau[x][y+1].nombrePlaceParCoin(3);
+        }
+      }
+    }
+    return nombre;
   }
 
   public String toString(){

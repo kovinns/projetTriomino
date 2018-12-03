@@ -1,5 +1,8 @@
 package structRecherche.kdArbre;
 
+import structRecherche.StructRecherche;
+import plateau.Triomino;
+
 import java.util.ArrayList;
 
 public class TdArbre implements StructRecherche {
@@ -10,7 +13,7 @@ public class TdArbre implements StructRecherche {
     this.racine = null;
   }
 
-  private boolean ajouterTriomino(Triomino t){
+  public boolean ajouterTriomino(Triomino t){
     if(!t.isEmplacement()){
       return false;
     }
@@ -22,7 +25,7 @@ public class TdArbre implements StructRecherche {
     }
   }
 
-  private ArrayList<Triomino> rechercher(Triomino t){
+  public ArrayList<Triomino> rechercher(Triomino t){
     if(t.isEmplacement()){
       return new ArrayList<Triomino>();
     }
@@ -41,7 +44,7 @@ public class TdArbre implements StructRecherche {
     }
   }
 
-  private boolean supprimerTriomino(Triomino t){
+  public boolean supprimerTriomino(Triomino t){
     if(!t.isEmplacement()){
       return false;
     }
