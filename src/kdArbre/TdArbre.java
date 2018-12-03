@@ -22,7 +22,7 @@ public class TdArbre {
     }
 
     public TdArbre(Noeud n, int b) {
-        this.noeud = n);
+        this.noeud = n;
         this.bascule = b;
     }
 
@@ -34,7 +34,7 @@ public class TdArbre {
         return filsGauche;
     }
 
-    public void setFilsGauche(kd.TdArbre filsGauche) {
+    public void setFilsGauche(TdArbre filsGauche) {
         this.filsGauche = filsGauche;
     }
 
@@ -42,7 +42,7 @@ public class TdArbre {
         return filsDroit;
     }
 
-    public void setFilsDroit(kd.TdArbre filsDroit) {
+    public void setFilsDroit(TdArbre filsDroit) {
         this.filsDroit = filsDroit;
     }
 
@@ -55,27 +55,27 @@ public class TdArbre {
     }
 
     public int valeurCourante() {
-        if(this.bascule == 1) {
-            return this.noeud.getValeur1();
-        }
+      if(this.bascule == 1) {
+          return this.noeud.getValeur1();
+      }else{
         if(this.bascule == 2) {
-            return this.noeud.getValeur2();
+          return this.noeud.getValeur2();
+        }else{
+          return this.noeud.getValeur3();
         }
-        if(this.bascule == 3) {
-            return this.noeud.getValeur3();
-        }
+      }
     }
 
     public int valeurCourante(int b) {
-        if(b == 1) {
-            return this.noeud.getValeur1();
-        }
+      if(b == 1) {
+        return this.noeud.getValeur1();
+      }else{
         if(b == 2) {
-            return this.noeud.getValeur2();
+          return this.noeud.getValeur2();
+        }else{
+          return this.noeud.getValeur3();
         }
-        if(b == 3) {
-            return this.noeud.getValeur3();
-        }
+      }
     }
 
     public int basculeSuivante() {
@@ -99,18 +99,18 @@ public class TdArbre {
     }
 
     public int getValABascule(Noeud n, int b) {
-        if(b == 1) {
-            return n.getValeur1();
-        }
+      if(b == 1) {
+        return n.getValeur1();
+      }else{
         if(b == 2) {
-            return n.getValeur2();
+          return n.getValeur2();
+        }else{
+          return n.getValeur2();
         }
-        if(b == 3) {
-            return n.getValeur2();
-        }
+      }
     }
 
-    public boolean egalNoeud(Noeud n1, Noeud2) {
+    public boolean egalNoeud(Noeud n1, Noeud n2) {
         if(n1.getValeur1() == n2.getValeur1() && n1.getValeur2() == n2.getValeur2() && n1.getValeur3() == n2.getValeur3()) {
             return true;
         } else {
@@ -160,38 +160,62 @@ public class TdArbre {
         }
     }
 
-    public boolean suprimer(TdArbre a) {
-        boolean res = false;
-
-        int valCourante = this.valeurCourante();
-        int valCourSupr = a.valeurCourante(this.bascule);
-
-        if(valCourSupr == valCourante) {
-            if(egalNoeud(this.noeud, a.getNoeud())) {
-                if(this.filsGauche == null) {
-                    this.filsDroit.setBascule(basculePrecedente());
-                    this = this.filsDroit;
-                } else {
-                    if(this.filsDroit == null) {
-                        this.filsGauche.setBascule(basculePrecedente());
-                        this = this.filsGauche;
-                    } else {
-                        this.filsDroit.inserer(this.filsGauche.getFilsDroit());
-                        this.filsGauche.setFilsDroit(this.filsDroit);
-                        this.filsGauche.setBascule(basculePrecedente());
-                        this = this.filsGauche;
-                    }
-                }
-                res  = true;
-            }
+    public Noeud max(int d){
+      Noeud mG = null;
+      if(this.filsGauche != null){
+        mG = this.filsGauche.max(d);
+      }
+      Noeud mD = null;
+      if(this.filsDroit != null){
+        mD = this.filsDroit.max(d);
+      }
+      int vG = ((mG != null)? ((d == 1)? mG.getValeur1() : ((d == 2)? mG.getValeur2() : mG.getValeur3() ) ) : -1 );
+      int vD = ((mD != null)? ((d == 1)? mD.getValeur1() : ((d == 2)? mD.getValeur2() : mD.getValeur3() ) ) : -1 );
+      int v = this.valeurCourante(d);
+      if(v > vG && v > vD){
+        return this.noeud;
+      }else{
+        if(vG > vD){
+          return mG;
+        }else{
+          return mD;
         }
-
-        if(valCourante > valCourSupr) {
-            this.filsGauche.suprimer(a);
-        } else if(valCourante < valCourSupr) {
-            this.filsDroit.suprimer(a);
-        }
-
-        return res;
+      }
     }
+
+  // public boolean suprimer(TdArbre a) {
+  //   boolean res = false;
+  //
+  //   int valCourante = this.valeurCourante();
+  //   int valCourSupr = a.valeurCourante(this.bascule);
+  //
+  //   if(valCourSupr == valCourante) {
+  //     if(egalNoeud(this.noeud, a.getNoeud())) {
+  //       if(this.filsGauche == null) {
+  //         this.filsDroit.setBascule(basculePrecedente());
+  //         this = this.filsDroit;
+  //       } else {
+  //         if(this.filsDroit == null) {
+  //           this.filsGauche.setBascule(basculePrecedente());
+  //           this = this.filsGauche;
+  //         } else {
+  //           this.filsDroit.inserer(this.filsGauche.getFilsDroit());
+  //           this.filsGauche.setFilsDroit(this.filsDroit);
+  //           this.filsGauche.setBascule(basculePrecedente());
+  //           this = this.filsGauche;
+  //         }
+  //       }
+  //       res  = true;
+  //     }
+  //   }
+  //
+  //   if(valCourante > valCourSupr) {
+  //     this.filsGauche.suprimer(a);
+  //   } else if(valCourante < valCourSupr) {
+  //     this.filsDroit.suprimer(a);
+  //   }
+  //
+  //   return res;
+  // }
+
 }

@@ -16,7 +16,7 @@ public class Noeud {
      * @param v2 la deuxieme valeur du noeud
      * @param v3 la troisieme valeur du noeud
      */
-    public Noeud(v1, v2, v3) {
+    public Noeud(int v1, int v2, int v3) {
         this.valeur1 = v1;
         this.valeur2 = v2;
         this.valeur3 = v3;
@@ -79,7 +79,6 @@ public class Noeud {
                 "valeur1=" + valeur1 +
                 ", valeur2=" + valeur2 +
                 ", valeur3=" + valeur3 +
-                ", bascule=" + bascule +
                 '}';
     }
 

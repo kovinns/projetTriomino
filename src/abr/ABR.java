@@ -108,18 +108,30 @@ public class ABR {
      * Recherche la plus grande valeur stocké dans l'arbre à partir du noeud courant
      * @return le noeud avec la valeur la plus grande de l'arbre
      */
-  public ABR rechercherPlusgrand() {
+  public ABR rechercherPlusGrand() {
       if(this.filsDroit == null) {
           return this;
       } else {
-          this.filsDroit.rechercherPlusgrand();
+          return this.filsDroit.rechercherPlusGrand();
       }
   }
 
-    /**
-     * Insere une valeur dans l'arbre à partir du noeud courant
-     * @param v la valeur à inserer dans l'arbre
-     */
+  /**
+   * Recherche la plus grande valeur stocké dans l'arbre à partir du noeud courant
+   * @return le noeud avec la valeur la plus grande de l'arbre
+   */
+  public ABR rechercherPlusPetit() {
+      if(this.filsGauche == null) {
+          return this;
+      } else {
+          return this.filsGauche.rechercherPlusPetit();
+      }
+  }
+
+  /**
+   * Insere une valeur dans l'arbre à partir du noeud courant
+   * @param v la valeur à inserer dans l'arbre
+   */
   public void inserer(int v) {
 
     if(this.valeur >= v) {
@@ -147,10 +159,10 @@ public class ABR {
      */
   public void inserer(ABR a) {
       if(this.valeur >= a.getValeur()) {
-          if (this.filsGauche() == null) {
+          if (this.filsGauche == null) {
               this.setFilsGauche(a);
           } else {
-              this.filsGauche().inserer(a);
+              this.filsGauche.inserer(a);
           }
       } else {
           if(this.valeur < a.getValeur()){
@@ -163,34 +175,34 @@ public class ABR {
       }
   }
 
-    /**
-     * Suprime un élément de l'arbre à partir du noeud courant
-     * @param v l'element à suprimer de l'arbre
-     * @return un boolean indiquant si l'élement a été suprimé ou non
-     */
-  public boolean suprimer(int v) {
-      boolean res = false;
-
-      if(this.valeur == v) {
-          if(this.filsGauche == null) {
-              this = this.filsDroit;
-          } else {
-              if(this.filsDroit == null) {
-                  this = this.filsGauche;
-              } else {
-                  this.filsDroit.inserer(this.filsGauche.getFilsDroit());
-                  this.filsGauche.setFilsDroit(this.filsDroit);
-                  this = this.filsGauche;
-              }
-          }
-          res = true;
-      }
-      if(this.valeur > v && this.filsGauche != null) {
-          this.filsGauche.suprimer(v);
-      }else if(this.valeur < v && this.filsDroit != null) {
-          this.filsDroit.suprimer(v);
-      }
-    return res;
-  }
+  // /**
+  //  * Suprime un élément de l'arbre à partir du noeud courant
+  //  * @param v l'element à suprimer de l'arbre
+  //  * @return un boolean indiquant si l'élement a été suprimé ou non
+  //  */
+  // public boolean suprimer(int v) {
+  //     boolean res = false;
+  //
+  //     if(this.valeur == v) {
+  //         if(this.filsGauche == null) {
+  //             this = this.filsDroit;
+  //         } else {
+  //             if(this.filsDroit == null) {
+  //                 this = this.filsGauche;
+  //             } else {
+  //                 this.filsDroit.inserer(this.filsGauche.getFilsDroit());
+  //                 this.filsGauche.setFilsDroit(this.filsDroit);
+  //                 this = this.filsGauche;
+  //             }
+  //         }
+  //         res = true;
+  //     }
+  //     if(this.valeur > v && this.filsGauche != null) {
+  //         this.filsGauche.suprimer(v);
+  //     }else if(this.valeur < v && this.filsDroit != null) {
+  //         this.filsDroit.suprimer(v);
+  //     }
+  //   return res;
+  // }
 
 }

@@ -36,7 +36,7 @@ package plateau;
     return this.coins[i%3];
   }
 
-  public Integer setCoin(int i, Integer a){
+  public void setCoin(int i, Integer a){
     this.coins[i%3] = a;
   }
 
@@ -49,7 +49,7 @@ package plateau;
       return false;
     }
     for(int i = 0; i < 3; i++){
-      if(this.coins[i] != null && this.coins[i] != t.get((i+orientation)%3)){
+      if(this.coins[i] != null && this.coins[i] != t.getCoin((i+orientation)%3)){
         return false;
       }
     }
@@ -57,7 +57,7 @@ package plateau;
   }
 
   public String toString(){
-    return this.coins[0] + " " + this.coins[1] + " " + this.coins[2];
+    return this.coins[0] + " " + this.coins[1] + " " + this.coins[2] + " " + this.orientation + " " + this.emplacement;
   }
 
 }

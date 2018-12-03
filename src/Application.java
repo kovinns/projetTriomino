@@ -1,23 +1,25 @@
 import java.util.ArrayList;
-import plateau.Triomino;
+import plateau.*;
 
 public class Application{
 
-  public static void main(String[] args) {
+  public static void main(String[] args){
+    Plateau plateau = new Plateau();
+    Triomino t1 = new Triomino(0,1,2,false);
+    plateau.afficher();
+    clearScreen();
+    plateau.addTriomino(t1, 15, 29, 0, false);
+    plateau.afficher();
+    clearScreen();
+    Triomino t2 = new Triomino(0,4,5,false);
+    plateau.addTriomino(t2, 14, 28, 5, true);
+    plateau.afficher();
+  }
 
-    ArrayList<Triomino> liste = new ArrayList<Triomino>();
-    for(int i = 0; i < 6; i++){
-      for(int j = i; j < 6; j++){
-        for(int k = j; k < 6; k++){
-          liste.add(new Triomino(i, j, k));
-        }
-      }
-    }
-    System.out.println(liste.size());
-    for(int i = 0; i < liste.size(); i++){
-      System.out.println(liste.get(i));
-    }
-
+  public static void clearScreen(){
+    System.out.println();
+    System.out.print("\033[H\033[2J");
+    System.out.flush();
   }
 
 }
