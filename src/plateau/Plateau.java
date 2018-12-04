@@ -144,6 +144,14 @@ public class Plateau{
     return place;
   }
 
+  public void setEmplacement(Triomino t, int x, int y, int p){
+    if(this.plateau[x][y] == null){
+      this.plateau[x][y] = new PaireTriominos(x, y, this);
+    }
+    this.plateau[x][y].setTriomino(t, p);
+    this.struct.ajouterTriomino(t);
+  }
+
   public Integer getCoin(int x, int y, int c){
     Integer valeur = null;
     if(this.plateau[x][y] != null){
@@ -193,6 +201,7 @@ public class Plateau{
   }
 
   public void afficher(){
+    System.out.println();
     String ligne = "      ";
     for(int i = minY; i <= maxY; i++){
       ligne += i + " ";
@@ -230,7 +239,7 @@ public class Plateau{
           }else{
             Triomino p1 = null;
             if(i > 0 && this.plateau[i-1][j] != null){
-              p1 = this.plateau[i][j-1].getTriomino(0);
+              p1 = this.plateau[i-1][j].getTriomino(0);
             }
             Integer coin = t1.getCoin(0);
             l1 += coin + ((p1 == null || p1.isEmplacement())? "  ": "--");
@@ -287,6 +296,7 @@ public class Plateau{
     Integer coin = this.getCoin(maxX, maxY, 2);
     l += ((coin != null)? coin : " " );
     System.out.println(l);
+    System.out.println();
   }
 
   public boolean addInStruct(Triomino t){
@@ -372,6 +382,10 @@ public class Plateau{
       }
     }
     return nombre;
+  }
+
+  public String afficherStruct(){
+    return this.struct.toString();
   }
 
   public String toString(){

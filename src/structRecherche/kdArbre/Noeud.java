@@ -35,7 +35,7 @@ public class Noeud {
   public boolean ajouterTriomino(Triomino t){
     Integer v1 = this.getValeur(this.bascule);
     Integer v2 = t.getCoin(this.bascule);
-    if(v1 == null || (v2 != null && v2 <= v1)){
+    if(v1 == null || (v2 != null && v2.compareTo(v1) <= 0)){
       if(this.filsGauche != null){
         return this.filsGauche.ajouterTriomino(t);
       }else{
@@ -56,7 +56,7 @@ public class Noeud {
     ArrayList<Triomino> liste = new ArrayList<Triomino>();
     Integer v1 = this.getValeur(this.bascule);
     Integer v2 = t.getCoin(this.bascule);
-    if(v1 == null || v2 <= v1){
+    if(v1 == null || v2.compareTo(v1) <= 0){
       if(
         (v1 == null || v1.equals(v2)) &&
         (this.getValeur((this.bascule+1)%3) == null || this.getValeur((this.bascule+1)%3).equals(t.getCoin((this.bascule+1)%3))) &&
@@ -84,7 +84,7 @@ public class Noeud {
   public boolean supprimerTriomino(Triomino t){
     Integer v1 = this.getValeur(this.bascule);
     Integer v2 = t.getCoin(this.bascule);
-    if(v1 == null || (v2 != null && v2 <= v1)){
+    if(v1 == null || (v2 != null && v2.compareTo(v1) >= 0)){
       if(this.filsGauche != null){
         Triomino t2 = this.filsGauche.getTriomino();
         if(t2 == t){
@@ -151,20 +151,24 @@ public class Noeud {
       Triomino tD = null;
       if(this.filsDroit != null){
         tD = this.filsDroit.max(b);
-        if(tD.getCoin(b) == null || tD.getCoin(b) > max){
+        if(tD.getCoin(b) == null || tD.getCoin(b).compareTo(max) > 0){
           t = tD;
           max = tD.getCoin(b);
         }
       }
       if(this.bascule != b && this.filsGauche != null){
         tG = this.filsGauche.max(b);
-        if(tG.getCoin(b) == null || tG.getCoin(b) > max){
+        if(tG.getCoin(b) == null || tG.getCoin(b).compareTo(max) > 0){
           t = tG;
           max = tG.getCoin(b);
         }
       }
       return t;
     }
+  }
+
+  public String toString(){
+    return ((this.filsGauche != null)? "(" + this.filsGauche.toString() + ") - " : "" ) + "(" + this.triomino.toString() + ")" + ((this.filsGauche != null)? " - (" + this.filsGauche.toString() + ")" : "" );
   }
 
 }

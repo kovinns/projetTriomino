@@ -1,213 +1,74 @@
 package abr;
 
-/**
- * Classe implémantant l'Arbre Binaire de Recherche
- * @author Victor BOIX
- * @version 1.0
- */
+import java.util.ArrayList;
+import plateau.Triomino;
 
 public class ABR {
-  private int valeur;
-  private ABR filsGauche;
-  private ABR filsDroit;
 
-    /**
-     * constructeur de la classe ABR
-     * @param v la valeur du noeud
-     * @param filsG le fils gauche du noeud
-     * @param filsD le fils droit du noeud
-     */
-  public ABR(int v,ABR filsG, ABR filsD) {
-    this.valeur = v;
-    this.filsGauche = filsG;
-    this.filsDroit = filsD;
+  private Noeud racine;
+
+  public ABR(){
+    this.racine = null;
   }
 
-    /**
-     * constructeur de la classe ABR
-     * @param v la valeur du noeud
-     */
-  public ABR(int v) {
-    this.valeur = v;
-    this.filsGauche = null;
-    this.filsDroit = null;
-  }
-
-    /**
-     * Définie le fils gauche du noeud courant
-     * @param filsG l'arbre à inserer en fils gauche
-     */
-  public void setFilsGauche(ABR filsG) {
-    this.filsGauche = filsG;
-  }
-
-    /**
-     * Définie le fils droit du noeud courant
-     * @param filsD l'arbre à inserer en fils droit
-     */
-  public void setFilsDroit(ABR filsD) {
-    this.filsDroit = filsD;
-  }
-
-    /**
-     * Définie la valeur du noeud courant
-     * @param v la valeur a définir
-     */
-  private void setValeur(int v) {
-    this.valeur = v;
-  }
-
-    /**
-     *
-     * @return le fils gauche du noeud courant
-     */
-  public ABR getFilsGauche() {
-    return this.filsGauche;
-  }
-
-    /**
-     *
-     * @return le fils droit du noeud courant
-     */
-  public ABR getFilsDroit() {
-    return this.filsDroit;
-  }
-
-    /**
-     *
-     * @return la valeur du noeud courant
-     */
-  public int getValeur() {
-    return this.valeur;
-  }
-
-  public void remplacerNoeud(ABR a) {
-      this.valeur = a.getValeur();
-      this.filsGauche = a.getFilsGauche();
-      this.filsDroit = a.getFilsDroit();
-  }
-    /**
-     * Recherche une valeur dans l'arbre à partir du noeud courant
-     * @param v la valeur à rechercher dans l'arbre
-     * @return un booléan indiquant si la valeur a été trouvé ou non
-     */
-  public boolean rechercher(int v) {
-    boolean res = false;
-
-    if(this.valeur == v) {
-      res = true;
-    } else {
-      if(this.valeur > v && this.filsGauche != null) {
-        res = this.filsGauche.rechercher(v);
-      }
-
-      if(this.valeur < v && this.filsDroit != null) {
-        res = this.filsDroit.rechercher(v);
-      }
+  public boolean ajouterTriomino(Triomino t){
+    if(!t.isEmplacement()){
+      return false;
     }
-
-    return res;
+    if(this.racine == null){
+      this.racine = new Noeud(t);
+      return true;
+    }else{
+      return this.racine.inserer(t);
+    }
   }
 
-    /**
-     * Recherche la plus grande valeur stocké dans l'arbre à partir du noeud courant
-     * @return le noeud avec la valeur la plus grande de l'arbre
-     */
-  public ABR rechercherPlusGrand() {
-      if(this.filsDroit == null) {
-          return this;
-      } else {
-          return this.filsDroit.rechercherPlusGrand();
-      }
-  }
-
-  /**
-   * Recherche la plus petite valeur stocké dans l'arbre à partir du noeud courant
-   * @return le noeud avec la valeur la plus grande de l'arbre
-   */
-  public ABR rechercherPlusPetit() {
-      if(this.filsGauche == null) {
-          return this;
-      } else {
-          return this.filsGauche.rechercherPlusPetit();
-      }
-  }
-
-  /**
-   * Insere une valeur dans l'arbre à partir du noeud courant
-   * @param v la valeur à inserer dans l'arbre
-   */
-  public void inserer(int v) {
-
-    if(this.valeur >= v) {
-      if(this.filsGauche == null) {
-        ABR nouveauNoeud = new ABR(v);
-        this.setFilsGauche(nouveauNoeud);
-      } else {
-        this.filsGauche.inserer(v);
-      }
-    } else {
-      if(this.valeur < v) {
-        if(this.filsDroit == null) {
-          ABR nouveauNoeud = new ABR(v);
-          this.setFilsDroit(nouveauNoeud);
-        } else {
-          this.filsDroit.inserer(v);
+  public ArrayList<Triomino> rechercher(Triomino t){
+    if(t.isEmplacement()){
+      return new ArrayList<Triomino>();
+    }
+    if(this.racine == null){
+      return new ArrayList<Triomino>();
+    }else{
+      ArrayList<Triomino> liste = new ArrayList<Triomino>();
+      for(int i = 0; i < 3; i++){
+        ArrayList<Triomino> retour = this.racine.rechercher(t);
+        if(retour != null){
+          liste.addAll(retour);
         }
+        t.rotation();
+      }
+      return liste;
+    }
+  }
+
+  public boolean supprimerTriomino(Triomino t){
+    if(!t.isEmplacement()){
+      return false;
+    }
+    if(this.racine == null){
+      return false;
+    }else{
+      Triomino t2 = this.racine.getTriomino();
+      if(t == t2){
+        if(this.racine.getFilsGauche() != null || this.racine.getFilsDroit() != null){
+          return this.racine.remplacer();
+        }else{
+          this.racine = null;
+          return true;
+        }
+      }else{
+        return this.racine.supprimer(t);
       }
     }
   }
 
-    /**
-     * Insere un arbre dans l'arbre à partir du noeud courant
-     * @param a l'arbre à inserer
-     */
-  public void inserer(ABR a) {
-      if(this.valeur >= a.getValeur()) {
-          if (this.filsGauche == null) {
-              this.setFilsGauche(a);
-          } else {
-              this.filsGauche.inserer(a);
-          }
-      } else {
-          if(this.valeur < a.getValeur()){
-              if(this.filsDroit == null) {
-                  this.setFilsDroit(a);
-              } else {
-                  this.filsDroit.inserer(a);
-              }
-          }
-      }
+  public String toString(){
+    if(this.racine == null){
+      return "";
+    }else{
+      return this.racine.toString();
+    }
   }
-
-   // /**
-   //  * Suprime un élément de l'arbre à partir du noeud courant
-   //  * @param v l'element à suprimer de l'arbre
-   //  * @return un boolean indiquant si l'élement a été suprimé ou non
-   //  */
-   // public boolean suprimer(int v) {
-   //     boolean res = false;
-   //
-   //     if(this.valeur == v) {
-   //         if(this.filsGauche == null) {
-   //             this.remplacerNoeud(this.filsDroit);
-   //         } else {
-   //             if(this.filsDroit == null) {
-   //                 this.remplacerNoeud(this.filsGauche);
-   //             } else {
-   //                 this.filsDroit.inserer(this.filsGauche.getFilsDroit());
-   //                 this.filsGauche.setFilsDroit(this.filsDroit);
-   //                 this = remplacerNoeud(this.filsGauche);
-   //             }
-   //         }
-   //         res = true;
-   //     }
-   //     if(this.valeur > v && this.filsGauche != null) {
-   //         this.filsGauche.suprimer(v);
-   //     }else if(this.valeur < v && this.filsDroit != null) {
-   //         this.filsDroit.suprimer(v);
-   //     }
-   //   return res;
-   // }
 
 }

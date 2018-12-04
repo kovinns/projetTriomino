@@ -12,4 +12,6 @@ public interface StructRecherche{
 
   ArrayList<Triomino> rechercher(Triomino t);
 
+  String toString();
+
 }

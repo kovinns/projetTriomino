@@ -196,6 +196,11 @@ public class PaireTriominos{
     return this.paire[p%2];
   }
 
+  public void setTriomino(Triomino t, int p){
+    t.positionner(this.x, this.y, p*3);
+    this.paire[p] = t;
+  }
+
   public String toString(){
     return ((this.paire[0] != null)? "0=(" + this.paire[0].toString() + ") ": "" ) + ((this.paire[1] != null)? " 1=(" + this.paire[1].toString() + ")" : "" );
   }

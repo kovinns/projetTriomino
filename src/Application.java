@@ -80,7 +80,7 @@ public class Application{
           b = new Integer(table[1]);
           c = new Integer(table[2]);
           if(a < 0 || a > 5 || b < 0 || b > 5 || c < 0 || c > 5){
-            throw new Exception("Vous ne connaissez pas les règles du triomino de toute évidence");
+            throw new Exception("Les coins d'un triomino sont comprient entre 0 et 5");
           }
         }catch(Exception e){
           valide = false;
@@ -96,7 +96,7 @@ public class Application{
       plateau.afficher();
     }
     if(compteur == 0){
-      plateau.addTriomino(new Triomino(null, null, null, true),15, 29, 0, true);
+      plateau.setEmplacement(new Triomino(null, null, null, true),15, 29, 0);
     }
     return compteur;
   }
@@ -105,55 +105,17 @@ public class Application{
     System.out.println("***********************************************************************");
     System.out.println("                      REMPLISSAGE DE LA MAIN                           ");
     System.out.println("***********************************************************************");
-    Scanner sc = new Scanner(System.in);
-    int compteur = dejaPlaces;
-    principale:
-    while(compteur < 30){
-      boolean valide = false;
-      Integer a = null;
-      Integer b = null;
-      Integer c = null;
-      while(!valide){
-        valide = true;
-        System.out.println("***********************************************************************");
-        System.out.println("Entrez 'stop' pour ne pas entrer de nouveau triomino.");
-        System.out.println("Entrez les valeur 'a b c' dans le sens horraire du triomino à ajouter");
-        System.out.println("Exemple : '5 0 2'");
-        String ligne = sc.nextLine();
-        if(ligne.contains("stop")){
-          break principale;
-        }
-        String[] table = ligne.split(" ");
-        try{
-          a = new Integer(table[0]);
-          b = new Integer(table[1]);
-          c = new Integer(table[2]);
-          if(a < 0 || a > 5 || b < 0 || b > 5 || c < 0 || c > 5){
-            throw new Exception("Vous ne connaissez pas les règles du triomino de toute évidence");
-          }
-        }catch(Exception e){
-          valide = false;
-          System.out.println("***********************************************************************");
-          System.out.println(e);
-          System.out.println("L'une des données demandées avait un format incorrecte ou était absente");
-          System.out.println("Veuillez recommencer");
-        }
-        if(valide){
-          Triomino t = new Triomino(a, b, c, false);
-          liste.add(t);
-          System.out.println("***********************************************************************");
-          System.out.println("Triomino (" + t + ") ajouté");
-          compteur ++;
-        }
-      }
-    }
-    return compteur;
+    return remplirListe(liste, dejaPlaces);
   }
 
   private static int OuPiocher(ArrayList<Triomino> liste, int dejaPlaces){
     System.out.println("***********************************************************************");
     System.out.println("                     REMPLISSAGE DE LA PIOCHE                          ");
     System.out.println("***********************************************************************");
+    return remplirListe(liste, dejaPlaces);
+  }
+
+  private static int remplirListe(ArrayList<Triomino> liste, int dejaPlaces){
     Scanner sc = new Scanner(System.in);
     int compteur = dejaPlaces;
     principale:
@@ -178,7 +140,7 @@ public class Application{
           b = new Integer(table[1]);
           c = new Integer(table[2]);
           if(a < 0 || a > 5 || b < 0 || b > 5 || c < 0 || c > 5){
-            throw new Exception("Vous ne connaissez pas les règles du triomino de toute évidence");
+            throw new Exception("Les coins d'un triomino sont comprient entre 0 et 5");
           }
         }catch(Exception e){
           valide = false;
@@ -257,6 +219,7 @@ public class Application{
         score += marque;
         plateau.afficher();
         System.out.println("Le score actuel est de : " + score);
+        System.out.println(plateau.afficherStruct());
         if(liste.size() == 0){
           fini = true;
         }
