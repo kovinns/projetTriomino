@@ -13,6 +13,7 @@ public class Noeud {
     this.triomino = triomino;
     this.filsGauche = null;
     this.filsDroit = null;
+    this.bascule = bascule;
   }
 
   public Integer getValeur(int d){
@@ -57,9 +58,9 @@ public class Noeud {
     Integer v2 = t.getCoin(this.bascule);
     if(v1 == null || v2 <= v1){
       if(
-        (v1 == null || v1 == v2) &&
-        (this.getValeur((this.bascule+1)%3) == null || this.getValeur((this.bascule+1)%3) == t.getCoin((this.bascule+1)%3)) &&
-        (this.getValeur((this.bascule+2)%3) == null || this.getValeur((this.bascule+2)%3) == t.getCoin((this.bascule+2)%3))
+        (v1 == null || v1.equals(v2)) &&
+        (this.getValeur((this.bascule+1)%3) == null || this.getValeur((this.bascule+1)%3).equals(t.getCoin((this.bascule+1)%3))) &&
+        (this.getValeur((this.bascule+2)%3) == null || this.getValeur((this.bascule+2)%3).equals(t.getCoin((this.bascule+2)%3)))
       ){
         liste.add(this.triomino);
       }
@@ -68,8 +69,6 @@ public class Noeud {
         if(retour != null){
           liste.addAll(retour);
         }
-      }else{
-        return null;
       }
     }else{
       if(this.filsDroit != null){
@@ -77,8 +76,6 @@ public class Noeud {
         if(retour != null){
           liste.addAll(retour);
         }
-      }else{
-        return null;
       }
     }
     return liste;
@@ -145,25 +142,29 @@ public class Noeud {
   }
 
   public Triomino max(int b){
-    int max = this.triomino.getCoin(b);
+    Integer max = this.triomino.getCoin(b);
     Triomino t = this.triomino;
-    Triomino tG = null;
-    Triomino tD = null;
-    if(this.filsDroit != null){
-      tD = this.filsDroit.max(b);
-      if(tD.getCoin(b) > max){
-        t = tD;
-        max = tD.getCoin(b);
+    if(max == null){
+      return t;
+    }else{
+      Triomino tG = null;
+      Triomino tD = null;
+      if(this.filsDroit != null){
+        tD = this.filsDroit.max(b);
+        if(tD.getCoin(b) == null || tD.getCoin(b) > max){
+          t = tD;
+          max = tD.getCoin(b);
+        }
       }
-    }
-    if(this.bascule != b && this.filsGauche != null){
-      tG = this.filsGauche.max(b);
-      if(tG.getCoin(b) > max){
-        t = tG;
-        max = tG.getCoin(b);
+      if(this.bascule != b && this.filsGauche != null){
+        tG = this.filsGauche.max(b);
+        if(tG.getCoin(b) == null || tG.getCoin(b) > max){
+          t = tG;
+          max = tG.getCoin(b);
+        }
       }
+      return t;
     }
-    return t;
   }
 
 }

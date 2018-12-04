@@ -21,8 +21,8 @@ public class Plateau{
     }
     this.struct = new TdArbre();
     this.minX = 29;
-    this.minY = 0;
-    this.maxX = 29;
+    this.minY = 59;
+    this.maxX = 0;
     this.maxY = 0;
   }
 
@@ -194,7 +194,7 @@ public class Plateau{
 
   public void afficher(){
     String ligne = "      ";
-    for(int i = minX; i <= maxX; i++){
+    for(int i = minY; i <= maxY; i++){
       ligne += i + " ";
       if(i < 10){
         ligne += " ";
@@ -303,49 +303,71 @@ public class Plateau{
 
   public int nombrePlaceParCoin(int x, int y, int c){
     int nombre = 0;
-    nombre += plateau[x][y].nombrePlaceParCoin(c);
+    if(plateau[x][y] != null){
+      nombre += plateau[x][y].nombrePlaceParCoin(c);
+    }
     if(c < 2){
       if(x > 0){
-        nombre += plateau[x-1][y].nombrePlaceParCoin(3-c);
+        if(plateau[x-1][y] != null){
+          nombre += plateau[x-1][y].nombrePlaceParCoin(3-c);
+        }
         if(c == 0){
           if(y > 0){
-            nombre += plateau[x-1][y-1].nombrePlaceParCoin(2);
+            if(plateau[x-1][y-1] != null){
+              nombre += plateau[x-1][y-1].nombrePlaceParCoin(2);
+            }
           }
         }else{
           if(y < 58){
-            nombre += plateau[x-1][y+1].nombrePlaceParCoin(3);
+            if(plateau[x-1][y+1] != null){
+              nombre += plateau[x-1][y+1].nombrePlaceParCoin(3);
+            }
           }
         }
       }
       if(c == 0){
         if(y > 0){
-          nombre += plateau[x][y-1].nombrePlaceParCoin(1);
+          if(plateau[x][y-1] != null){
+            nombre += plateau[x][y-1].nombrePlaceParCoin(1);
+          }
         }
       }else{
         if(y < 58){
-          nombre += plateau[x][y+1].nombrePlaceParCoin(0);
+          if(plateau[x][y+1] != null){
+            nombre += plateau[x][y+1].nombrePlaceParCoin(0);
+          }
         }
       }
     }else{
       if(x < 29){
-        nombre += plateau[x+1][y].nombrePlaceParCoin(3-c);
+        if(plateau[x+1][y] != null){
+          nombre += plateau[x+1][y].nombrePlaceParCoin(3-c);
+        }
         if(c == 3){
           if(y > 0){
-            nombre += plateau[x+1][y-1].nombrePlaceParCoin(1);
+            if(plateau[x+1][y-1] != null){
+              nombre += plateau[x+1][y-1].nombrePlaceParCoin(1);
+            }
           }
         }else{
           if(y < 58){
-            nombre += plateau[x+1][y+1].nombrePlaceParCoin(0);
+            if(plateau[x+1][y+1] != null){
+              nombre += plateau[x+1][y+1].nombrePlaceParCoin(0);
+            }
           }
         }
       }
       if(c == 3){
         if(y > 0){
-          nombre += plateau[x][y-1].nombrePlaceParCoin(2);
+          if(plateau[x][y-1] != null){
+            nombre += plateau[x][y-1].nombrePlaceParCoin(2);
+          }
         }
       }else{
         if(y < 58){
-          nombre += plateau[x][y+1].nombrePlaceParCoin(3);
+          if(plateau[x][y+1] != null){
+            nombre += plateau[x][y+1].nombrePlaceParCoin(3);
+          }
         }
       }
     }
@@ -357,7 +379,7 @@ public class Plateau{
     for(int i = 0; i < 30; i++){
       for(int j = 0; j < 59; j++){
         if(plateau[i][j] != null){
-          retour += i + "," + j + " " +plateau[i][j].toString();
+          retour += i + "," + j + ":" +plateau[i][j].toString();
         }
       }
     }

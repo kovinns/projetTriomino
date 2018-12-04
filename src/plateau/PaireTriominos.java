@@ -99,6 +99,7 @@ public class PaireTriominos{
       }
     }else{
       tri = new Triomino(null, null, null, true);
+      tri.positionner(this.x, this.y, position*3);
       this.paire[position] = tri;
       tri.setCoin(a1, t.getCoin(a2));
       tri.setCoin(b1, t.getCoin(b2));
@@ -196,7 +197,7 @@ public class PaireTriominos{
   }
 
   public String toString(){
-    return ((this.paire[0] != null)? this.paire[0].toString() : "" ) + " " + ((this.paire[1] != null)? this.paire[1].toString() : "" );
+    return ((this.paire[0] != null)? "0=(" + this.paire[0].toString() + ") ": "" ) + ((this.paire[1] != null)? " 1=(" + this.paire[1].toString() + ")" : "" );
   }
 
 }

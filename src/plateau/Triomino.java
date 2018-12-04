@@ -60,7 +60,7 @@ package plateau;
       return false;
     }
     for(int i = 0; i < 3; i++){
-      if(this.coins[i] != null && this.coins[i] != t.getCoin((i+orientation)%3)){
+      if(this.coins[i] != null && !this.coins[i].equals(t.getCoin((i+orientation)%3))){
         return false;
       }
     }
@@ -69,8 +69,12 @@ package plateau;
 
   public Integer getOrientation(Triomino t){
     for(int i = 0; i < 3; i++){
-      if(this.remplacable(t, i)){
-        return i;
+      if(
+        (this.coins[(this.orientation)%3] == null || this.coins[(this.orientation)%3].equals(t.getCoin((this.orientation+i)%3))) &&
+        (this.coins[(this.orientation+1)%3] == null || this.coins[(this.orientation+1)%3].equals(t.getCoin((this.orientation+i+1)%3))) &&
+        (this.coins[(this.orientation+2)%3] == null || this.coins[(this.orientation+2)%3].equals(t.getCoin((this.orientation+i+2)%3)))
+      ){
+        return orientation+i;
       }
     }
     return -1;

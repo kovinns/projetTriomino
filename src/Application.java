@@ -17,14 +17,20 @@ public class Application{
   }
 
   private static int RemplirPlateau(Plateau plateau){
+    clearScreen();
+    System.out.println("***********************************************************************");
+    System.out.println("                      REMPLISSAGE DU TABLEAU                           ");
+    System.out.println("***********************************************************************");
     int compteur = 0;
     Scanner sc = new Scanner(System.in);
+    principale:
     while(compteur < 30){
       boolean valide = false;
       Integer x = null;
       Integer y = null;
       Integer p = null;
       while(!valide){
+        valide = true;
         System.out.println("***********************************************************************");
         System.out.println("Entrez 'stop' pour ne pas entrer de nouveau triomino.");
         System.out.println("Entrez les coordonnées du triomino (jusqu'à 29 en x et 59 en y) et son orientation ( 0 pointe en haut, 1 pointe en bas): ");
@@ -32,7 +38,7 @@ public class Application{
         System.out.println("Exemple : '15 29 0'");
         String coord = sc.nextLine();
         if(coord.contains("stop")){
-          break;
+          break principale;
         }
         String[] table = coord.split(" ");
         try{
@@ -44,6 +50,8 @@ public class Application{
           }
           if(p < 0 || p > 1){
             throw new Exception("Cette orientation est indisponnible");
+          }else{
+            p *= 3;
           }
         }catch(Exception e){
           valide = false;
@@ -58,6 +66,7 @@ public class Application{
       Integer c = null;
       valide = false;
       while(!valide){
+        valide = true;
         System.out.println("***********************************************************************");
         System.out.println("Entrez les trois valeurs du triomino dans le sens horraire ('a b c'): ");
         System.out.println("Toute erreur de connectivité entre deux triomino sera de votre responsabilité, non de la notre.");
@@ -74,6 +83,7 @@ public class Application{
             throw new Exception("Vous ne connaissez pas les règles du triomino de toute évidence");
           }
         }catch(Exception e){
+          valide = false;
           System.out.println("***********************************************************************");
           System.out.println(e);
           System.out.println("L'une des données demandées avait un format incorrecte ou était absente");
@@ -92,21 +102,26 @@ public class Application{
   }
 
   private static int TriominosAPlacer(ArrayList<Triomino> liste, int dejaPlaces){
+    System.out.println("***********************************************************************");
+    System.out.println("                      REMPLISSAGE DE LA MAIN                           ");
+    System.out.println("***********************************************************************");
     Scanner sc = new Scanner(System.in);
     int compteur = dejaPlaces;
+    principale:
     while(compteur < 30){
       boolean valide = false;
       Integer a = null;
       Integer b = null;
       Integer c = null;
       while(!valide){
+        valide = true;
         System.out.println("***********************************************************************");
         System.out.println("Entrez 'stop' pour ne pas entrer de nouveau triomino.");
         System.out.println("Entrez les valeur 'a b c' dans le sens horraire du triomino à ajouter");
         System.out.println("Exemple : '5 0 2'");
         String ligne = sc.nextLine();
         if(ligne.contains("stop")){
-          break;
+          break principale;
         }
         String[] table = ligne.split(" ");
         try{
@@ -117,6 +132,7 @@ public class Application{
             throw new Exception("Vous ne connaissez pas les règles du triomino de toute évidence");
           }
         }catch(Exception e){
+          valide = false;
           System.out.println("***********************************************************************");
           System.out.println(e);
           System.out.println("L'une des données demandées avait un format incorrecte ou était absente");
@@ -135,7 +151,52 @@ public class Application{
   }
 
   private static int OuPiocher(ArrayList<Triomino> liste, int dejaPlaces){
-    return TriominosAPlacer(liste, dejaPlaces);
+    System.out.println("***********************************************************************");
+    System.out.println("                     REMPLISSAGE DE LA PIOCHE                          ");
+    System.out.println("***********************************************************************");
+    Scanner sc = new Scanner(System.in);
+    int compteur = dejaPlaces;
+    principale:
+    while(compteur < 30){
+      boolean valide = false;
+      Integer a = null;
+      Integer b = null;
+      Integer c = null;
+      while(!valide){
+        valide = true;
+        System.out.println("***********************************************************************");
+        System.out.println("Entrez 'stop' pour ne pas entrer de nouveau triomino.");
+        System.out.println("Entrez les valeur 'a b c' dans le sens horraire du triomino à ajouter");
+        System.out.println("Exemple : '5 0 2'");
+        String ligne = sc.nextLine();
+        if(ligne.contains("stop")){
+          break principale;
+        }
+        String[] table = ligne.split(" ");
+        try{
+          a = new Integer(table[0]);
+          b = new Integer(table[1]);
+          c = new Integer(table[2]);
+          if(a < 0 || a > 5 || b < 0 || b > 5 || c < 0 || c > 5){
+            throw new Exception("Vous ne connaissez pas les règles du triomino de toute évidence");
+          }
+        }catch(Exception e){
+          valide = false;
+          System.out.println("***********************************************************************");
+          System.out.println(e);
+          System.out.println("L'une des données demandées avait un format incorrecte ou était absente");
+          System.out.println("Veuillez recommencer");
+        }
+        if(valide){
+          Triomino t = new Triomino(a, b, c, false);
+          liste.add(t);
+          System.out.println("***********************************************************************");
+          System.out.println("Triomino (" + t + ") ajouté");
+          compteur ++;
+        }
+      }
+    }
+    return compteur;
   }
 
   private static ArrayList<Triomino> OuPlacerTriomino(Triomino t, Plateau p){
