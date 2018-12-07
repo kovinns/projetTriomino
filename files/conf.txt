@@ -1,2 +1,2 @@
 Remplir a la main : true
-Mode pas e pas : true
+Mode pas a pas : true
