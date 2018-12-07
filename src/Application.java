@@ -1,19 +1,67 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 import plateau.Plateau;
 import plateau.Triomino;
 
 public class Application{
 
   public static void main(String[] args){
-    Plateau plateau = new Plateau();
-    int compteur = 0;
-    compteur = RemplirPlateau(plateau);
+    Plateau plateau = initialisationPLateau();
+    Scanner sc = new Scanner(System.in);
+    boolean aLaMain = true;
+    boolean pasAPas = true;
+    try{
+      List<String> lignes = Files.readAllLines(Paths.get("files/conf.txt"));
+      aLaMain = lignes.get(0).contains("true");
+      pasAPas = lignes.get(1).contains("true");
+    }catch(Exception e){
+      System.out.println(e);
+    }
     ArrayList<Triomino> liste = new ArrayList<Triomino>();
-    compteur = TriominosAPlacer(liste, compteur);
     ArrayList<Triomino> pioche = new ArrayList<Triomino>();
-    compteur = OuPiocher(pioche, compteur);
-    Jouer(plateau, liste, pioche);
+    if(aLaMain){
+      int compteur = 0;
+      compteur = RemplirPlateau(plateau);
+      compteur = TriominosAPlacer(liste, compteur);
+      compteur = OuPiocher(pioche, compteur);
+    }else{
+      initialisationParFichier(plateau, liste, pioche);
+    }
+    clearScreen();
+    Jouer(plateau, liste, pioche, pasAPas);
+  }
+
+  private static Plateau initialisationPLateau(){
+    Plateau plateau = null;
+    boolean correcte = false;
+    Scanner sc = new Scanner(System.in);
+    while(!correcte){
+      correcte = true;
+      System.out.println("Quel structure de recherche voulez-vous utiliser ?");
+      System.out.println("1 - 3dArbre    2 - ABR ?");
+      String ligne = sc.nextLine();
+      Integer choix = 1;
+      try{
+        choix = new Integer(ligne.split(" ")[0]);
+        if(choix == 1){
+          plateau = new Plateau(0);
+        }else if(choix == 2){
+          plateau = new Plateau(1);
+        }else{
+          correcte = false;
+          System.out.println("Vous ne semblez pas avoir entré l'un des deux choix propsé");
+          System.out.println("Veuillez recommencer");
+        }
+      }catch(Exception e){
+        System.out.println(e);
+        correcte = false;
+      }
+    }
+    return plateau;
   }
 
   private static int RemplirPlateau(Plateau plateau){
@@ -33,7 +81,7 @@ public class Application{
         valide = true;
         System.out.println("***********************************************************************");
         System.out.println("Entrez 'stop' pour ne pas entrer de nouveau triomino.");
-        System.out.println("Entrez les coordonnées du triomino (jusqu'à 29 en x et 59 en y) et son orientation ( 0 pointe en haut, 1 pointe en bas): ");
+        System.out.println("Entrez les coordonnées du triomino (jusqu'à 29 en x et 58 en y) et son orientation ( 0 pointe en haut, 1 pointe en bas): ");
         System.out.println("Il est conseillé de commencer à la case [15,29] position 0, se trouvant à l'exacte centre du plateau");
         System.out.println("Exemple : '15 29 0'");
         String coord = sc.nextLine();
@@ -45,7 +93,7 @@ public class Application{
           x = new Integer(table[0]);
           y = new Integer(table[1]);
           p = new Integer(table[2]);
-          if(x < 0 || x > 29 || y < 0 || y > 59){
+          if(x < 0 || x > 29 || y < 0 || y > 58){
             throw new Exception("Veillez rester sur le plateau s'il vous plait");
           }
           if(p < 0 || p > 1){
@@ -153,7 +201,7 @@ public class Application{
           Triomino t = new Triomino(a, b, c, false);
           liste.add(t);
           System.out.println("***********************************************************************");
-          System.out.println("Triomino (" + t + ") ajouté");
+          System.out.println("Triomino " + t + " ajouté");
           compteur ++;
         }
       }
@@ -162,7 +210,17 @@ public class Application{
   }
 
   private static ArrayList<Triomino> OuPlacerTriomino(Triomino t, Plateau p){
-    return p.rechercheInStrut(t);
+    ArrayList<Triomino> liste = p.rechercheInStrut(t);
+    if(liste.size() > 0){
+      String affichage = "Le triomino " + t + " peut être placé au position : ";
+      for(Triomino emplacement : liste){
+        affichage += "(" + emplacement.getX() + "," + emplacement.getY() + ")";
+      }
+      System.out.println(affichage);
+    }else{
+      System.out.println("Le triomino " + t + " ne peut pas être placé");
+    }
+    return liste;
   }
 
   private static Integer QuelTriominoPlacer(ArrayList<Triomino> liste, Plateau plateau){
@@ -189,7 +247,7 @@ public class Application{
     }else{
       boolean place = plateau.addTriomino(t, emplacement.getX(), emplacement.getY(), emplacement.getOrientation(t), false);
       if(place){
-        System.out.println("Le triomino (" + t + ") a été placé en " + emplacement.getX() + " " + emplacement.getY());
+        System.out.println("Le triomino " + t + " a été placé en " + emplacement.getX() + " " + emplacement.getY());
         liste.remove(t);
         return score;
       }else{
@@ -198,10 +256,11 @@ public class Application{
     }
   }
 
-  private static void Jouer(Plateau plateau, ArrayList<Triomino> liste, ArrayList<Triomino> pioche){
+  private static void Jouer(Plateau plateau, ArrayList<Triomino> liste, ArrayList<Triomino> pioche, boolean pasAPas){
     boolean fini = false;
     boolean perdu = false;
     int score = 0;
+    Scanner sc = new Scanner(System.in);
     while(!fini){
       Integer marque = QuelTriominoPlacer(liste, plateau);
       if(marque == null){
@@ -212,14 +271,30 @@ public class Application{
           int rang = (int)(Math.random() * pioche.size());
           Triomino t = pioche.remove(rang);
           liste.add(t);
-          System.out.println("Aucun triomino ne peut être placé, le triomino (" + t + ") a été pioché");
+          System.out.println("Aucun triomino ne peut être placé, le triomino " + t + " a été pioché");
         }
       }else{
         System.out.println("Vous avez marqué " + marque + " points");
         score += marque;
+        clearScreen();
         plateau.afficher();
         System.out.println("Le score actuel est de : " + score);
-        System.out.println(plateau.afficherStruct());
+        if(liste.size() > 0){
+          System.out.println("Il reste dans votre main :");
+          System.out.println(liste);
+        }else{
+          System.out.println("Votre main est vide");
+        }
+        if(pioche.size() > 0){
+          System.out.println("Il reste dans la pioche :");
+          System.out.println(pioche);
+        }else{
+          System.out.println("La pioche est vide");
+        }
+        System.out.println("Appuyez sur 'entrer' pour continuer à jouer");
+        if(pasAPas){
+          sc.nextLine();
+        }
         if(liste.size() == 0){
           fini = true;
         }
@@ -227,6 +302,37 @@ public class Application{
     }
     System.out.println("Vous avez " + ((perdu)? "perdu": "gagné") + ".");
     System.out.println("Vous avez eu le temps de marquer " + score + " points.");
+  }
+
+  private static void initialisationParFichier(Plateau plateau, ArrayList<Triomino> liste, ArrayList<Triomino> pioche){
+    try {
+      for (String ligne : Files.readAllLines(Paths.get("files/plateau.txt"))) {
+        String[] tab = ligne.split(" ");
+        Integer x = new Integer(tab[0]);
+        Integer y = new Integer(tab[1]);
+        Integer p = new Integer(tab[2]);
+        Integer a = new Integer(tab[3]);
+        Integer b = new Integer(tab[4]);
+        Integer c = new Integer(tab[5]);
+        plateau.addTriomino(new Triomino(a, b, c, false), x, y, p*3, true);
+      }
+      for (String ligne : Files.readAllLines(Paths.get("files/main.txt"))) {
+        String[] tab = ligne.split(" ");
+        Integer a = new Integer(tab[0]);
+        Integer b = new Integer(tab[1]);
+        Integer c = new Integer(tab[2]);
+        liste.add(new Triomino(a, b, c, false));
+      }
+      for (String ligne : Files.readAllLines(Paths.get("files/pioche.txt"))) {
+        String[] tab = ligne.split(" ");
+        Integer a = new Integer(tab[0]);
+        Integer b = new Integer(tab[1]);
+        Integer c = new Integer(tab[2]);
+        pioche.add(new Triomino(a, b, c, false));
+      }
+    }catch(Exception e){
+      System.out.println(e);
+    }
   }
 
   public static void clearScreen(){

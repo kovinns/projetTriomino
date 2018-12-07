@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import structRecherche.StructRecherche;
 import structRecherche.kdArbre.TdArbre;
+import structRecherche.abr.ABR;
 
 public class Plateau{
 
@@ -12,18 +13,30 @@ public class Plateau{
   private int minX, minY, maxX, maxY;
   private StructRecherche struct;
 
-  public Plateau(){
+  public Plateau(int struct){
     this.plateau = new PaireTriominos[30][59];
     for(int i = 0; i < 30; i++){
       for(int j = 0; j < 59; j++){
         this.plateau[i][j] = null;
       }
     }
-    this.struct = new TdArbre();
+    if(struct == 0){
+      this.struct = new TdArbre();
+    }else{
+      this.struct = new ABR();
+    }
     this.minX = 29;
     this.minY = 59;
     this.maxX = 0;
     this.maxY = 0;
+  }
+
+  public Triomino getTriomino(int x, int y, int p){
+    if(this.plateau[x][y] == null){
+      return null;
+    }else{
+      return this.plateau[x][y].getTriomino(p);
+    }
   }
 
   public boolean addTriomino(Triomino t, int x, int y, int orientation, boolean forcer){
@@ -174,7 +187,7 @@ public class Plateau{
               valeur = this.plateau[x+1][y-1].getCoin(1);
             }
             if(valeur == null){
-              if((c == 2 || c == 3) && y < 58 && this.plateau[x+1][y] != null){
+              if((c == 2 || c == 3) && x < 29 && this.plateau[x+1][y] != null){
                 valeur = this.plateau[x+1][y].getCoin(3-c);
               }
               if(valeur == null){
@@ -182,7 +195,7 @@ public class Plateau{
                   valeur = this.plateau[x+1][y+1].getCoin(0);
                 }
                 if(valeur == null){
-                  if((c == 1 || c == 2) && x < 29 && this.plateau[x][y+1] != null){
+                  if((c == 1 || c == 2) && y < 58 && this.plateau[x][y+1] != null){
                     valeur = this.plateau[x][y+1].getCoin((c-1)*3);
                   }
                   if(valeur == null){

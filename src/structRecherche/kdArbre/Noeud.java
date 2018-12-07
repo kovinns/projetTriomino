@@ -43,11 +43,19 @@ public class Noeud {
         return true;
       }
     }else{
+      boolean place = true;
+      if(v2 == null){
+        if(this.filsGauche != null){
+          place = this.filsGauche.ajouterTriomino(t);
+        }else{
+          this.filsGauche = new Noeud(t, (this.bascule+1)%3);
+        }
+      }
       if(this.filsDroit != null){
-        return this.filsDroit.ajouterTriomino(t);
+        return this.filsDroit.ajouterTriomino(t) && place;
       }else{
         this.filsDroit = new Noeud(t, (this.bascule+1)%3);
-        return true;
+        return place;
       }
     }
   }
@@ -84,7 +92,7 @@ public class Noeud {
   public boolean supprimerTriomino(Triomino t){
     Integer v1 = this.getValeur(this.bascule);
     Integer v2 = t.getCoin(this.bascule);
-    if(v1 == null || (v2 != null && v2.compareTo(v1) >= 0)){
+    if(v1 == null || (v2 != null && v2.compareTo(v1) <= 0)){
       if(this.filsGauche != null){
         Triomino t2 = this.filsGauche.getTriomino();
         if(t2 == t){
@@ -101,17 +109,32 @@ public class Noeud {
         return false;
       }
     }else{
+      boolean supprime = true;
+      if(v2 == null){
+        if(this.filsGauche != null){
+          Triomino t2 = this.filsGauche.getTriomino();
+          if(t2 == t){
+            if(this.filsGauche.getFilsGauche() != null || this.filsGauche.getFilsDroit() != null){
+              supprime = this.filsGauche.remplacer();
+            }else{
+              this.filsGauche = null;
+            }
+          }else{
+            supprime =  this.filsGauche.supprimerTriomino(t);
+          }
+        }
+      }
       if(this.filsDroit != null){
         Triomino t2 = this.filsDroit.getTriomino();
         if(t2 == t){
           if(this.filsDroit.getFilsGauche() != null || this.filsDroit.getFilsDroit() != null){
-            return this.filsDroit.remplacer();
+            return this.filsDroit.remplacer() && supprime;
           }else{
             this.filsDroit = null;
-            return true;
+            return supprime;
           }
         }else{
-          return this.filsDroit.supprimerTriomino(t);
+          return this.filsDroit.supprimerTriomino(t) && supprime;
         }
       }else{
         return false;
@@ -125,7 +148,7 @@ public class Noeud {
       if(this.filsGauche.getFilsGauche() != null || this.filsGauche.getFilsDroit() != null){
         t = this.filsGauche.max(this.bascule);
         this.triomino = t;
-        return this.filsGauche.supprimerTriomino(t);
+        return this.filsGauche.supprimerTriomino(t) && ((t.getCoin(this.bascule) == null && this.filsDroit != null)? this.filsDroit.supprimerTriomino(t) : true);
       }else{
         t = this.filsGauche.getTriomino();
         this.triomino = t;
@@ -154,6 +177,9 @@ public class Noeud {
         if(tD.getCoin(b) == null || tD.getCoin(b).compareTo(max) > 0){
           t = tD;
           max = tD.getCoin(b);
+          if(max == null){
+            return t;
+          }
         }
       }
       if(this.bascule != b && this.filsGauche != null){
@@ -168,7 +194,7 @@ public class Noeud {
   }
 
   public String toString(){
-    return ((this.filsGauche != null)? "(" + this.filsGauche.toString() + ") - " : "" ) + "(" + this.triomino.toString() + ")" + ((this.filsGauche != null)? " - (" + this.filsGauche.toString() + ")" : "" );
+    return "(" + ((this.filsGauche != null)? this.filsGauche.toString() : "" ) + ") - " + this.triomino.toString() + " - (" + ((this.filsDroit != null)? this.filsDroit.toString() : "" )  + ")";
   }
 
 }

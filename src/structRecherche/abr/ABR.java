@@ -1,9 +1,10 @@
-package abr;
+package structRecherche.abr;
 
 import java.util.ArrayList;
 import plateau.Triomino;
+import structRecherche.StructRecherche;
 
-public class ABR {
+public class ABR implements StructRecherche{
 
   private Noeud racine;
 

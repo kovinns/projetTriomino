@@ -109,30 +109,64 @@ public class PaireTriominos{
       this.plateau.addInStruct(tri);
     }
     if(tri.getScore() < 60 && tri.getCoin(0) != null && tri.getCoin(1) != null && tri.getCoin(2) != null){
-      int score = 40;
-      int ajout = 0;
+      int score = 0;
       if(position == 0){
-        if(this.plateau.nombrePlaceParCoin(this.x, this.y, 0) == 5){
-          ajout += 10;
+        int nombre = this.plateau.nombrePlaceParCoin(this.x, this.y, 0);
+        if(nombre == 5){
+          score = 50;
         }
-        if(this.plateau.nombrePlaceParCoin(this.x, this.y, 2) == 5){
-          ajout += 10;
+        if(score == 0 && a1+b1 == 3){
+          if(nombre - ((this.paire[1] != null)? 1 : 0) - ((this.y > 0 && this.plateau.getTriomino(this.x, this.y-1, 1) != null)? 1: 0) > 0){
+            score = 40;
+          }
         }
-        if(ajout < 20 && this.plateau.nombrePlaceParCoin(this.x, this.y, 3) == 5){
-          ajout += 10;
+        nombre = this.plateau.nombrePlaceParCoin(this.x, this.y, 2);
+        if(nombre == 5){
+          score = ((score > 40)? 60 : 50);
+        }
+        if(score == 0 && a1+b1 == 2){
+          if(nombre - ((this.paire[1] != null)? 1 : 0) - ((this.x < 29 && this.plateau.getTriomino(this.x+1, this.y, 1) != null)? 1: 0) > 0){
+            score = 40;
+          }
+        }
+        nombre = this.plateau.nombrePlaceParCoin(this.x, this.y, 3);
+        if(nombre == 5){
+          score = ((score > 40)? 60 : 50);
+        }
+        if(score == 0 && a1+b1 == 1){
+          if(nombre - ((this.y > 0 && this.plateau.getTriomino(this.x, this.y-1, 1) != null)? 1: 0) - ((this.x < 29 && this.plateau.getTriomino(this.x+1, this.y, 1) != null)? 1: 0) > 0){
+            score = 40;
+          }
         }
       }else{
-        if(this.plateau.nombrePlaceParCoin(this.x, this.y, 0) == 5){
-          ajout += 10;
+        int nombre = this.plateau.nombrePlaceParCoin(this.x, this.y, 0);
+        if(nombre == 5){
+          score = 50;
         }
-        if(this.plateau.nombrePlaceParCoin(this.x, this.y, 1) == 5){
-          ajout += 10;
+        if(score == 0 && a1+b1 == 3){
+          if(nombre - ((this.paire[0] != null)? 1 : 0) - ((this.x > 0 && this.plateau.getTriomino(this.x-1, this.y, 0) != null)? 1: 0) > 0){
+            score = 40;
+          }
         }
-        if(ajout < 20 && this.plateau.nombrePlaceParCoin(this.x, this.y, 2) == 5){
-          ajout += 10;
+        nombre = this.plateau.nombrePlaceParCoin(this.x, this.y, 1);
+        if(nombre == 5){
+          score = ((score > 40)? 60 : 50);
+        }
+        if(score == 0 && a1+b1 == 2){
+          if(nombre - ((this.y > 58 && this.plateau.getTriomino(this.x, this.y+1, 0) != null)? 1: 0) - ((this.x > 0 && this.plateau.getTriomino(this.x-1, this.y, 0) != null)? 1: 0) > 0){
+            score = 40;
+          }
+        }
+        nombre = this.plateau.nombrePlaceParCoin(this.x, this.y, 2);
+        if(nombre == 5){
+          score = ((score > 40)? 60 : 50);
+        }
+        if(score == 0 && a1+b1 == 1){
+          if(nombre - ((this.paire[0] != null)? 1 : 0) - ((this.y > 58 && this.plateau.getTriomino(this.x, this.y+1, 0) != null)? 1: 0) > 0){
+            score = 40;
+          }
         }
       }
-      score += ajout;
       tri.setScore(score);
     }
   }

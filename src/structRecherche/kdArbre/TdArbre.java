@@ -14,7 +14,6 @@ public class TdArbre implements StructRecherche {
   }
 
   public boolean ajouterTriomino(Triomino t){
-    System.out.println("coucou " + t);
     if(!t.isEmplacement()){
       return false;
     }

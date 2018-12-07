@@ -16,17 +16,17 @@ package plateau;
     this.score = 0;
   }
 
-  public void positionner(int x, int y, int orientation){
+  public void positionner(int x, int y, int o){
     this.x = x;
     this.y = y;
-    this.orientation = orientation;
-    orientation %= 3;
-    if(orientation == 1){
+    this.orientation = o;
+    o %= 3;
+    if(o == 1){
       int save = this.coins[0];
       this.coins[0] = this.coins[2];
       this.coins[2] = this.coins[1];
       this.coins[1] = save;
-    }else if(orientation == 2){
+    }else if(o == 2){
       int save = this.coins[0];
       this.coins[0] = this.coins[1];
       this.coins[1] = this.coins[2];
@@ -55,12 +55,12 @@ package plateau;
     }
   }
 
-  public boolean remplacable(Triomino t, int orientation){
+  public boolean remplacable(Triomino t, int o){
     if(!this.emplacement){
       return false;
     }
     for(int i = 0; i < 3; i++){
-      if(this.coins[i] != null && !this.coins[i].equals(t.getCoin((i+orientation)%3))){
+      if(this.coins[i] != null && !this.coins[i].equals(t.getCoin((6-o+i)%3))){
         return false;
       }
     }
@@ -70,11 +70,11 @@ package plateau;
   public Integer getOrientation(Triomino t){
     for(int i = 0; i < 3; i++){
       if(
-        (this.coins[(this.orientation)%3] == null || this.coins[(this.orientation)%3].equals(t.getCoin((this.orientation+i)%3))) &&
-        (this.coins[(this.orientation+1)%3] == null || this.coins[(this.orientation+1)%3].equals(t.getCoin((this.orientation+i+1)%3))) &&
-        (this.coins[(this.orientation+2)%3] == null || this.coins[(this.orientation+2)%3].equals(t.getCoin((this.orientation+i+2)%3)))
+        (this.coins[0] == null || this.coins[0].equals(t.getCoin((3-i)%3))) &&
+        (this.coins[1] == null || this.coins[1].equals(t.getCoin((4-i)%3))) &&
+        (this.coins[2] == null || this.coins[2].equals(t.getCoin((5-i)%3)))
       ){
-        return orientation+i;
+        return ((this.orientation >= 3)? 3 : 0 ) + i;
       }
     }
     return -1;
@@ -97,7 +97,7 @@ package plateau;
   }
 
   public String toString(){
-    return this.coins[0] + " " + this.coins[1] + " " + this.coins[2];
+    return "(" + this.coins[0] + " " + this.coins[1] + " " + this.coins[2] + ")";
   }
 
 }
