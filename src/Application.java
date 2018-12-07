@@ -261,7 +261,15 @@ public class Application{
     boolean perdu = false;
     int score = 0;
     Scanner sc = new Scanner(System.in);
+    clearScreen();
+    System.out.println("Voici le plateau initial :");
+    plateau.afficher();
     while(!fini){
+      if(pasAPas){
+        System.out.println("Appuyez sur 'entrer' pour continuer à jouer");
+        sc.nextLine();
+        clearScreen();
+      }
       Integer marque = QuelTriominoPlacer(liste, plateau);
       if(marque == null){
         if(pioche.size() == 0){
@@ -276,7 +284,6 @@ public class Application{
       }else{
         System.out.println("Vous avez marqué " + marque + " points");
         score += marque;
-        clearScreen();
         plateau.afficher();
         System.out.println("Le score actuel est de : " + score);
         if(liste.size() > 0){
@@ -290,10 +297,6 @@ public class Application{
           System.out.println(pioche);
         }else{
           System.out.println("La pioche est vide");
-        }
-        System.out.println("Appuyez sur 'entrer' pour continuer à jouer");
-        if(pasAPas){
-          sc.nextLine();
         }
         if(liste.size() == 0){
           fini = true;
